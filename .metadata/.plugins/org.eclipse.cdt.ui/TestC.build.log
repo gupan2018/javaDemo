@@ -1,0 +1,7 @@
+09:27:11 **** Incremental Build of configuration Debug for project TestC ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o TestC.exe "src\\main.o" 
+
+09:27:12 Build Finished (took 1s.131ms)
+

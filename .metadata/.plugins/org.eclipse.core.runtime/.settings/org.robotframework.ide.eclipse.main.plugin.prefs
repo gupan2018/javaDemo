@@ -1,0 +1,7 @@
+assistantAutoActivationChars=.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@&*[
+assistantKeywordPrefixAutoAdditionEnabled=true
+eclipse.preferences.version=1
+red.editor.assistant.keywordFromNotImportedLibrary=true
+red.tasks.enabled=true
+red.tasks.priorities=HIGH;NORMAL
+red.tasks.tags=FIXME;TODO

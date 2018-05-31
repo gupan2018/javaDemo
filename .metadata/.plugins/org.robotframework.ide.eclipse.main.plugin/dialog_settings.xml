@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.robotframework.ide.tableditor.activePage./RFTest/MyFirstTest0503.robot">
+		<item value="" key="activePage"/>
+	</section>
+	<section name="org.robotframework.ide.tableditor.activePage./RFTest/RFTestFolder/EgUserKey.robot">
+		<item value="" key="activePage"/>
+	</section>
+	<section name="org.robotframework.ide.tableditor.activePage./RFTest/RFTestFolder/__init__.robot">
+		<item value="" key="activePage"/>
+	</section>
+	<section name="problemPreferences">
+	</section>
+	<section name="org.robotframework.ide.project.editor.activePage.RFTest">
+		<item value="ReferencedLibrariesProjectConfigurationEditorPart" key="activePage"/>
+	</section>
+	<section name="org.robotframework.ide.project.editor.activePage.Test0503">
+		<item value="GeneralProjectConfigurationEditorPart" key="activePage"/>
+	</section>
+	<section name="org.robotframework.ide.tableditor.activePage./RFTest/RFTestFolder/MyFirstTest0503.robot">
+		<item value="red.variables" key="activePage"/>
+	</section>
+</section>

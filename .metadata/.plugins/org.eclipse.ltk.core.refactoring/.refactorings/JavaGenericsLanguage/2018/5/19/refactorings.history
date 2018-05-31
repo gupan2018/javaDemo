@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;com.generics.language&apos; to &apos;JavaBasicLanguage/src&apos;&#x0D;&#x0A;- Original project: &apos;JavaGenericsLanguage&apos;&#x0D;&#x0A;- Destination element: &apos;JavaBasicLanguage/src&apos;&#x0D;&#x0A;- Original element: &apos;JavaGenericsLanguage/src/com.generics.language&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=JavaBasicLanguage/src" element1="/src&lt;com.generics.language" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1525573490383" version="1.0"/>
+</session>
