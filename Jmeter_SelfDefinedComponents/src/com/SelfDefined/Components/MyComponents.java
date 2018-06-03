@@ -2,23 +2,23 @@ package com.SelfDefined.Components;
 
 import java.security.Policy.Parameters;
 
-import org.apache.jmeter.config.Arguments;//Õâ¸öÀàÊÇÓÃÀ´¶¨ÒåºÍ·ÃÎÊ²ÎÊıµÄ
-import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;//×Ô¶¨ÒåJavaÈ¡ÑùÆ÷ĞèÒª¼Ì³ĞÕâ¸öÀà
-import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;//JmeterµÄÉÏÏÂÎÄ
-import org.apache.jmeter.samplers.SampleResult;//·µ»Ø½á¹û
+import org.apache.jmeter.config.Arguments;//è¿™ä¸ªç±»æ˜¯ç”¨æ¥å®šä¹‰å’Œè®¿é—®å‚æ•°çš„
+import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;//è‡ªå®šä¹‰Javaå–æ ·å™¨éœ€è¦ç»§æ‰¿è¿™ä¸ªç±»
+import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;//Jmeterçš„ä¸Šä¸‹æ–‡
+import org.apache.jmeter.samplers.SampleResult;//è¿”å›ç»“æœ
 
 
-//ĞèÒª×Ô¶¨ÒåJavaÈ¡ÑùÆ÷Ê±¼Ì³ĞAbstractJavaSamplerClientÀà£¬Èç¹ûĞèÒªÖØĞ´HTTPÈ¡ÑùÆ÷£¬Ôò¼Ì³ĞÆäËûµÄÀà
+//éœ€è¦è‡ªå®šä¹‰Javaå–æ ·å™¨æ—¶ç»§æ‰¿AbstractJavaSamplerClientç±»ï¼Œå¦‚æœéœ€è¦é‡å†™HTTPå–æ ·å™¨ï¼Œåˆ™ç»§æ‰¿å…¶ä»–çš„ç±»
 public class MyComponents extends AbstractJavaSamplerClient{
 	private String a;
 	private String b;
 	
 	private String resultData;
 	
-	//Õâ¸ö·½·¨ÓÃÀ´¶¨Òåjava·½·¨µÄÈë²Î
-	//param.addArgument("num1", "");±íÊ¾Èë²Î²ÎÊıÃûÎªnum1£¬Ä¬ÈÏÖµÎª¿Õ
+	//è¿™ä¸ªæ–¹æ³•ç”¨æ¥å®šä¹‰javaæ–¹æ³•çš„å…¥å‚
+	//param.addArgument("num1", "");è¡¨ç¤ºå…¥å‚å‚æ•°åä¸ºnum1ï¼Œé»˜è®¤å€¼ä¸ºç©º
 	
-	//ÉèÖÃ¿ÉÓÃ²ÎÊı¼°Ä¬ÈÏÖµ
+	//è®¾ç½®å¯ç”¨å‚æ•°åŠé»˜è®¤å€¼
 	public Arguments getDefaultParameters() {
 		Arguments param = new Arguments();
 		param.addArgument("num1", "");
@@ -26,24 +26,24 @@ public class MyComponents extends AbstractJavaSamplerClient{
 		return param;
 	}
 	
-	// Ã¿¸öÏß³Ì²âÊÔÇ°Ö´ĞĞÒ»´Î£¬×öÒ»Ğ©³õÊ¼»¯¹¤×÷
+	// æ¯ä¸ªçº¿ç¨‹æµ‹è¯•å‰æ‰§è¡Œä¸€æ¬¡ï¼Œåšä¸€äº›åˆå§‹åŒ–å·¥ä½œ
 	public void setupTest(JavaSamplerContext arg0) {
 		
 	}
 	
-	//¿ªÊ¼²âÊÔ£¬´Óarg0²ÎÊı¿ÉÒÔ»ñµÃ²ÎÊıÖµ
+	//å¼€å§‹æµ‹è¯•ï¼Œä»arg0å‚æ•°å¯ä»¥è·å¾—å‚æ•°å€¼
 	public SampleResult runTest(JavaSamplerContext arg0) {
 		a = arg0.getParameter("num1");
 		b = arg0.getParameter("num2");
 		
 		SampleResult sr = new SampleResult();
-		sr.setSampleLabel("JavaÇëÇó");
+		sr.setSampleLabel("Javaè¯·æ±‚");
 		try {
 			sr.sampleStart();
 			Hello test = new Hello();
 			resultData = String.valueOf(test.sum(Integer.parseInt(a), Integer.parseInt(b)));
 			if (resultData != null && resultData.length() > 0) {
-				sr.setResponseData("½á¹ûÊÇ£º" + resultData, null);
+				sr.setResponseData("ç»“æœæ˜¯ï¼š" + resultData, null);
 				sr.setDataType(SampleResult.TEXT);
 			}
 			sr.setSuccessful(true);
@@ -64,9 +64,9 @@ public class MyComponents extends AbstractJavaSamplerClient{
 	
 	public static void main(String[] args ) {
 		Arguments params = new Arguments();
-		params.addArgument("num1", "1");//»ñÈ¡±äÁ¿num1µÄÖµ£¬ÈôÎª¿ÕÈ¡Ä¬ÈÏÖµ1£¬ÎÒÊÔÁËÒ»ÏÂÃ»É¶ÓÃ
+		params.addArgument("num1", "1");//è·å–å˜é‡num1çš„å€¼ï¼Œè‹¥ä¸ºç©ºå–é»˜è®¤å€¼1ï¼Œæˆ‘è¯•äº†ä¸€ä¸‹æ²¡å•¥ç”¨
 		params.addArgument("num2", "2");
-		JavaSamplerContext arg0 = new JavaSamplerContext(params);//´´½¨JmeterÉÏÏÂÎÄ
+		JavaSamplerContext arg0 = new JavaSamplerContext(params);//åˆ›å»ºJmeterä¸Šä¸‹æ–‡
 		MyComponents test = new MyComponents();
 		test.setupTest(arg0);
 		test.runTest(arg0);

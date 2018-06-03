@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import com.junit.calc.CalcExam;
 
-import junit.framework.Assert;
-
 public class DemoTestCalc {
 	private CalcExam calc;
 	
@@ -21,7 +19,7 @@ public class DemoTestCalc {
 		calc.add(3);
 		int result = calc.getResult();
 		System.out.println("实际结果为：" + result);
-		Assert.assertEquals(3, result);
+		assertEquals(3, result);
 	}
 	
 	@Test
@@ -29,7 +27,7 @@ public class DemoTestCalc {
 		calc.sub(3);
 		int result = calc.getResult();
 		System.out.println("实际结果为：" + result);
-		Assert.assertEquals(-3, result);
+		assertEquals(-3, result);
 	}
 	
 	@Test
@@ -37,7 +35,7 @@ public class DemoTestCalc {
 		calc.multi(3);
 		int result = calc.getResult();
 		System.out.println("实际结果为：" + result);
-		Assert.assertEquals(0, result);
+		assertEquals(0, result);
 	}
 	
 	@Test
@@ -45,7 +43,7 @@ public class DemoTestCalc {
 		calc.div(3);
 		int result = calc.getResult();
 		System.out.println("实际结果为：" + result);
-		Assert.assertEquals(0, result);
+		assertEquals(0, result);
 	}
 	
 }
