@@ -6,9 +6,125 @@
     <language>en</language>
      <atom:link href="http://marketplace.eclipse.org/rss.xml" rel="self" type="application/rss+xml" />
       <item>
+    <title>Spark Builder Generator</title>
+    <link>http://marketplace.eclipse.org/content/spark-builder-generator</link>
+    <description>&lt;div class=&quot;field field-name-field-resource-image field-type-image field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;img typeof=&quot;foaf:Image&quot; class=&quot;img-responsive&quot; src=&quot;http://marketplace.eclipse.org/sites/default/files/sparkbuildergeneratoricon.png&quot; width=&quot;110&quot; height=&quot;80&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-submitted-by field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Submitted by:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;/user/hsparkwpb/listings&quot; title=&quot;hsparkwpb&quot;&gt;hsparkwpb&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-date-updated field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Updated:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Sun, 2018-06-03 13:05&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-date-created field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Created:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Sun, 2016-10-23 07:09&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Generates a builder according to the GoF pattern for Java domain objects.&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Features&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;&lt;li&gt;Generates a builder with custom name patterns&lt;/li&gt;
+&lt;li&gt;Can generate &lt;a href=&quot;http://blog.crisp.se/2013/10/09/perlundholm/another-builder-pattern-for-java&quot; rel=&quot;nofollow&quot;&gt;staged builder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Capable of regenerating the builder&lt;/li&gt;
+&lt;li&gt;Compatible with most version of Eclipse&lt;/li&gt;
+&lt;li&gt;Highly configurable, check the plugin&#039;s preferences page&lt;/li&gt;
+&lt;li&gt;Capable of generate builder methods for visible fields in superclass&lt;/li&gt;
+&lt;li&gt;Encourages and supports null-safe programming practices&lt;/li&gt;
+&lt;li&gt;Open source (with very permissible MIT license)&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;strong&gt;Usage&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;To invoke the generation have a Java file active and press either the icon on the toolbar (the hammer) or Ctrl+Shift+B.&lt;br /&gt;
+You can click the small arrow next to the main icon to generate a different builder type (like staged builder), if you usually generate a certain kind of builder, set the default builder in the preferences page.&lt;br /&gt;
+You can set the preferences under: &lt;strong&gt;&lt;em&gt;Window-&amp;gt;Preferences-&amp;gt;Java-&amp;gt;Spark Builder Generator&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Example result:&lt;/strong&gt;&lt;/h2&gt;
+&lt;pre&gt;
+  public class Clazz {
+        private Integer firstField;
+        private Long secondField;
+        @Generated(&quot;SparkTools&quot;)
+        private Clazz(Builder builder) {
+            this.firstField = builder.firstField;
+            this.secondField = builder.secondField;
+        }
+        /**
+         * Creates builder to build {@link Clazz}.
+         * @return created builder
+         */
+        @Generated(&quot;SparkTools&quot;)
+        public static Builder builder() {
+            return new Builder();
+        }
+        /**
+         * Builder to build {@link Clazz}.
+         */
+        @Generated(&quot;SparkTools&quot;)
+        public static class Builder {
+            private Integer firstField;
+            private Long secondField;
+
+            private Builder() {
+            }
+
+            /**
+            * Builder method for firstField parameter.
+            * @return builder
+            */
+            @Nonnull
+            public Builder withFirstField(@Nonnull Integer firstField) {
+                this.firstField = firstField;
+                return this;
+            }
+
+            /**
+            * Builder method for secondField parameter.
+            * @return builder
+            */
+            @Nonnull
+            public Builder withSecondField(@Nonnull Long secondField) {
+                this.secondField = secondField;
+                return this;
+            }
+
+            /**
+            * Builder method of the builder.
+            * @return built class
+            */
+            @Nonnull
+            public Clazz build() {
+                return new Clazz(this);
+            }
+        }
+    }
+&lt;/pre&gt;&lt;h2&gt;&lt;strong&gt;Release notes&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;0.0.5&lt;/strong&gt; Added handling for code style prefix and suffix, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/5&quot; rel=&quot;nofollow&quot;&gt;Github issue 5&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.6&lt;/strong&gt; Added staged builder support., see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/4&quot; rel=&quot;nofollow&quot;&gt;Github issue 4&lt;/a&gt; Staged builder allows you to verify that all of the mandatory fields are set at compile time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.7&lt;/strong&gt; Option to add visible fields from superclasses to the builder, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/7&quot; rel=&quot;nofollow&quot;&gt;Github issue 7&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.8&lt;/strong&gt; Fixed regression bug that was introduced in 0.0.7. While collection visible fields from superclasses, under some Eclipse configurations IllegalArgumentException occurred during java.lang.Object parsing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.9&lt;/strong&gt; Added option to generate builder to selected class (in case of nested classes, or multiple classes in a single file), see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/10&quot; rel=&quot;nofollow&quot;&gt;Github issue 10&lt;/a&gt; Improvements to previous Builder class removing logic&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.10&lt;/strong&gt; Added the option to select which fields are generated in the builder, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/8&quot; rel=&quot;nofollow&quot;&gt;Github issue 8&lt;/a&gt;&lt;br /&gt;
+Fixed a small bug that deleted the previous builder when pressing the cancel button on the staging builder generator dialog Added MIT license file to plugin&#039;s site.xml, so it will show up on installation&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.11 &lt;/strong&gt;Initialize Optional value to Optional.empty() to follow nullsafe programming practices&lt;br /&gt;
+Initialize Collections with empty collections via java.util.Collections class&lt;br /&gt;
+Various bugfixes related to overriding previous builder&lt;br /&gt;
+Logging improvement&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.12&lt;/strong&gt; Generate @param tag to the builder&#039;s &quot;with&quot; methods, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/28&quot; rel=&quot;nofollow&quot;&gt;Github issue 28&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.13&lt;/strong&gt; Add fields from superclass&#039; constructor to the builder, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/30&quot; rel=&quot;nofollow&quot;&gt;Github issue 30&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.14 &lt;/strong&gt;Add the ability to create a builder based on an already existing instance, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/33&quot; rel=&quot;nofollow&quot;&gt;Github issue 33&lt;/a&gt;&lt;br /&gt;
+Dialog UX update&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.15 &lt;/strong&gt;Add builder fields for private fields in superclass that have setters, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/35&quot; rel=&quot;nofollow&quot;&gt;Github issue 35&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.16 &lt;/strong&gt;Generate Jackson deserialize annotations to the builder, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/37&quot; rel=&quot;nofollow&quot;&gt;Github issue 37&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;0.0.17 &lt;/strong&gt;Generate default constructor, see &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator/issues/39&quot; rel=&quot;nofollow&quot;&gt;Github issue 39&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;strong&gt;Troubleshooting installation failure&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Here are some common reasons installation fails, and steps to resolve&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Connection timeout&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This is a temporary problem, while accessing the update site. The server most of the times will be available again in a couple of minutes.&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;You may try the FTP download site (see below)&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;em&gt;For any other failure please contact me in the comments or Github.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Installing via FTP update site&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In your Eclipse go to:&lt;/p&gt;
+&lt;p&gt;Help-&amp;gt;Install new software-&amp;gt;Copy and paste the following URI:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;ftp://helospark.com:21/eclipse_plugin/SparkBuilderGeneratorPlugin/&quot; rel=&quot;nofollow&quot;&gt;ftp://helospark.com:21/eclipse_plugin/SparkBuilderGeneratorPlugin/&lt;/a&gt;&lt;br /&gt;
+Select the latest version (should be under SparkTools category) and install.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Installing from backup&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In case both FTP and HTTPS update sites are unavailable, you can install jar file from Mediafire backup:&lt;br /&gt;&lt;a href=&quot;http://www.mediafire.com/file/4975om2k54mb7ii/com.helospark.SparkBuilderGenerator_0.0.14.201802181419.jar&quot; rel=&quot;nofollow&quot;&gt;Latest backup&lt;/a&gt; (entire update site: &lt;a href=&quot;http://www.mediafire.com/folder/ya4g0y69b24vu/plugins&quot; rel=&quot;nofollow&quot;&gt;www.mediafire.com/folder/ya4g0y69b24vu/plugins&lt;/a&gt;)&lt;br /&gt;
+Locate the jar file, you wish to install (probably the latest), and copy it to your Eclipse&#039;s dropin folder.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Additional information:&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;For feature request, bug reports please use the GitHub page: &lt;a href=&quot;https://github.com/helospark/SparkBuilderGenerator&quot; rel=&quot;nofollow&quot;&gt;https://github.com/helospark/SparkBuilderGenerator&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+     <pubDate>Sun, 23 Oct 2016 11:09:34 +0000</pubDate>
+ <dc:creator>hsparkwpb</dc:creator>
+ <guid isPermaLink="false">3130970 at http://marketplace.eclipse.org</guid>
+ <comments>http://marketplace.eclipse.org/content/spark-builder-generator#comments</comments>
+  </item>
+  <item>
     <title>Swingcorder</title>
     <link>http://marketplace.eclipse.org/content/swingcorder</link>
-    <description>&lt;div class=&quot;field field-name-field-resource-image field-type-image field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;img typeof=&quot;foaf:Image&quot; class=&quot;img-responsive&quot; src=&quot;http://marketplace.eclipse.org/sites/default/files/swingcorder_world.png&quot; width=&quot;110&quot; height=&quot;80&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-date-updated field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Updated:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Sat, 2018-06-02 17:10&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;a href=&quot;/search/content/%22Kandor%2C%20LLC%22&quot;&gt;Kandor, LLC&lt;/a&gt;&lt;div class=&quot;field field-name-shared-date-created field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Created:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Mon, 2016-07-04 17:20&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-submitted-by field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Submitted by:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;/user/bspell/listings&quot; title=&quot;bspell&quot;&gt;bspell&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;a href=&quot;http://www.swingcorder.com/swingcorder/intro/&quot; rel=&quot;nofollow&quot;&gt;Swingcorder&lt;/a&gt; is a utility that provides the ability to record and recreate user input for Swing applications. Recorded input is translated into Java code that, when executed with the Swingcorder library, can be used to simulate user keyboard and mouse input. These Swingcorder &quot;scripts&quot; can also be customized or created manually and can executed as part of unit testing in a continuous integration (CI) system. Swingcorder can be used through its Eclipse plugin, which provides easy control over the recording and playback of scripts.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
+    <description>&lt;div class=&quot;field field-name-field-resource-image field-type-image field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;img typeof=&quot;foaf:Image&quot; class=&quot;img-responsive&quot; src=&quot;http://marketplace.eclipse.org/sites/default/files/swingcorder_world.png&quot; width=&quot;110&quot; height=&quot;80&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-date-updated field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Updated:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Sat, 2018-06-02 22:44&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;a href=&quot;/search/content/%22Kandor%2C%20LLC%22&quot;&gt;Kandor, LLC&lt;/a&gt;&lt;div class=&quot;field field-name-shared-date-created field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Created:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Mon, 2016-07-04 17:20&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-submitted-by field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Submitted by:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;/user/bspell/listings&quot; title=&quot;bspell&quot;&gt;bspell&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;&lt;a href=&quot;http://www.swingcorder.com/intro/overview/&quot; rel=&quot;nofollow&quot;&gt;Swingcorder&lt;/a&gt; is a utility that provides the ability to record and recreate user input for Swing applications. Recorded input is translated into Java code that, when executed with the Swingcorder library, can be used to simulate user keyboard and mouse input. Those Swingcorder scripts can also be customized or created manually and can executed as part of unit testing in a continuous integration (CI) system. Swingcorder can be used through its Eclipse plugin, which provides easy control over the recording and playback of scripts.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
      <pubDate>Mon, 04 Jul 2016 21:20:53 +0000</pubDate>
  <dc:creator>bspell</dc:creator>
  <guid isPermaLink="false">2959388 at http://marketplace.eclipse.org</guid>
@@ -193,21 +309,6 @@ What is new in Bndtools 3.3.0?
  <dc:creator>nbartlett</dc:creator>
  <guid isPermaLink="false">1220 at http://marketplace.eclipse.org</guid>
  <comments>http://marketplace.eclipse.org/content/bndtools#comments</comments>
-  </item>
-  <item>
-    <title>Mylyn Mantis Connector</title>
-    <link>http://marketplace.eclipse.org/content/mylyn-mantis-connector</link>
-    <description>&lt;div class=&quot;field field-name-field-resource-image field-type-image field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;img typeof=&quot;foaf:Image&quot; class=&quot;img-responsive&quot; src=&quot;http://marketplace.eclipse.org/sites/default/files/mylyn-mantis-eclipse-marketplace.jpg&quot; width=&quot;110&quot; height=&quot;80&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-date-updated field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Updated:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Wed, 2018-05-30 17:06&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;a href=&quot;/search/content/%22IT%20Software%20Solutions%2C%20Inc%22&quot;&gt;IT Software Solutions, Inc&lt;/a&gt;&lt;div class=&quot;field field-name-shared-date-created field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Date Created:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;Thu, 2007-02-22 11:27&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-shared-submitted-by field-type-text field-label-inline clearfix&quot;&gt;&lt;div class=&quot;field-label&quot;&gt;Submitted by:&amp;nbsp;&lt;/div&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot;&gt;&lt;a href=&quot;/user/chanetwp/listings&quot; title=&quot;chanetwp&quot;&gt;chanetwp&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;The Mylyn connector for MantisBT allows you to manage your bugs straight from Eclipse.&lt;/p&gt;
-&lt;p&gt;Supported features include:&lt;br /&gt;
-- creating and updating tasks&lt;br /&gt;
-- synchronizing&lt;br /&gt;
-- tasks&lt;br /&gt;
-- commenting&lt;br /&gt;
-- uploading and downloading attachments&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description>
-     <pubDate>Thu, 22 Feb 2007 16:27:10 +0000</pubDate>
- <dc:creator>chanetwp</dc:creator>
- <guid isPermaLink="false">403 at http://marketplace.eclipse.org</guid>
- <comments>http://marketplace.eclipse.org/content/mylyn-mantis-connector#comments</comments>
   </item>
   </channel>
 </rss>

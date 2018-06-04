@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<!-- 什么时候用属性、什么时候用子标签？
+		如果有下级，自己的信息就应该写在属性中
+	 -->
+	<emp id="1">
+		<name>顾攀</name>
+		<age>24</age>
+		<gender>男</gender>
+		<salary>100000</salary>
+	</emp>
+	<emp id="2">
+		<name>张小宝</name>
+		<age>26</age>
+		<gender>男</gender>
+		<salary>10000</salary>
+	</emp>
+	<emp id="3">
+		<name>老谈</name>
+		<age>29</age>
+		<gender>女</gender>
+		<salary>120000</salary>
+	</emp>
+</list>

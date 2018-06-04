@@ -1,6 +1,6 @@
-package com.communicate.demo;
+package com.communicateBroadCast.demo;
 /**
- * 聊天室服务器
+ * 聊天室服务器：实现消息广播功能
  * 
  * @author gupan
  *

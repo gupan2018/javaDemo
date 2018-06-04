@@ -1,6 +1,6 @@
-package com.communicate.demo;
+package com.communicatePersonal.demo;
 /**
- * 聊天室客户端
+ * 聊天室客户端:实现消息私聊功能（代码尚未实现）
  * 
  * @author gupan
  *
