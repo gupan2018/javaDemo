@@ -9,7 +9,6 @@ import org.dom4j.Element;
 
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
-
 /**
  * 解析xml语句的的类，解析emplist.xml文档，将所有员工的信息读取出来，转换为若干Emp实例，存入一个list集合中
  * 
