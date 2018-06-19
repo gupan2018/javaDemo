@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录界面</title>
+<style>
+	.ok{color:green;}
+	.error{color:red;}
+</style>
+</head>
+<body>
+	<!-- 对于form表单，submit按钮默认是触发了onsubmit事件，当这个事件返回false时，
+	点击submit按钮就不提交，通过修改onsubmit事件对应的函数，可以完成提交前的验证。
+	 -->
+	 
+	 <!-- 用return checkCode()+checkPassword()==2;的写法，避免&&进行校验第一个
+	 条件错误后就不判断，造成提示不完整的情况。
+	  -->
+	<form action="http://www.baidu.com" 
+		onsubmit="return checkCode()+checkPassword()==2;">
+		<p>
+			<!-- onblur焦点移除事件，当输入域中的光标被移出时触发这个事件 -->
+			账号：<input type="text" id="code" 
+				onblur="checkCode();"/>
+			<span id="code_msg">6-12位数字、字母、下划线的组合</span>
+		</p>
+		<p>
+			密码：<input type="password" id="password"/ 
+				onblur="checkPassword();">
+			<span id="password_msg">6-12位数字、字母、下划线的组合</span>
+		</p>
+		<p>
+			<input type="submit" value="登录"/>
+		</p>
+	</form>
+	<script>
+		//验证账号的格式
+		function checkCode(){
+			// alert(1);
+			var code = 
+				document.getElementById("code").value;
+			
+			var span = 
+				document.getElementById("code_msg");
+			// 帕努单账号格式
+			
+			var reg = /^\w{6,12}$/;//6~12位数字、字母和下划线（注意不要有空格）
+			if (reg.test(code)){
+				// 格式对了，变绿
+				span.className = "ok";
+				return true;
+			}else{
+				// 格式错了，变红
+				span.className = "error";
+				return false;
+			}
+		}
+		
+		//验证密码的格式
+		function checkPassword(){
+			var code = 
+				document.getElementById("password").value;
+			
+			var span = 
+				document.getElementById("password_msg");
+			// 帕努单账号格式
+			
+			var reg = /^\w{6,12}$/;//6~12位数字、字母和下划线（注意不要有空格）
+			if (reg.test(code)){
+				// 格式对了，变绿
+				span.className = "ok";
+				return true;
+			}else{
+				// 格式错了，变红
+				span.className = "error";
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

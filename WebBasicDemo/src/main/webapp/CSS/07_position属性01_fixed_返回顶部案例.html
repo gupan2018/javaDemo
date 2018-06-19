@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- 固定定位
+	设置position:fixed就将这个div固定在某一个位置-->
+<!--设置了position属性以后，可以设置top、left、bottom、-->
+<!--right等属性，可以实现样式分层-->
+<body>
+    <div onclick="GoTop();" style="width: 50px;height: 50px;background-color: black;color: white;
+    position: fixed;
+    bottom:20px;
+    right: 20px;
+    cursor:pointer;
+    ">返回顶部</div>
+    <div style="height: 5000px;background-color: #dddddd;">
+        asdfasdf
+    </div>
+    <script>
+        function GoTop(){
+            document.body.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

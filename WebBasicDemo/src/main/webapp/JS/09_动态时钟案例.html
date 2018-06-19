@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>动态时钟案例</title>
+<style>
+	#clock{
+		border:1px solid red;
+		width:200px;
+		height:30px;
+		text-align:center;
+		font-size:30px;
+		line-height:30px;
+	}
+</style>
+</head>
+<body>
+	<p>
+		<input type='button' value='开始'
+			onclick="start();"
+		/>
+		<input type='button' value='停止'
+			onclick="stop();"
+		/>
+	</p>
+	<p id="clock">
+		
+	</p>
+	<script>
+		// 开始
+		var clockId;
+		function start(){
+			// 如果id为空，这定时器已启动过，那么就不要再次启动了
+			if(!clockId){
+				clockId = setInterval(function(){
+					// 获取当前客户端时间
+					var d = new Date();
+					// 获取本地格式的时间
+					var  now = d.toLocaleTimeString();
+					// 将时间写入colck
+					var p =
+						document.getElementById("clock");
+					// 设置p的文本内容
+					p.innerHTML = now;
+				}, 1000);
+			}else{
+				return;
+			}
+		}
+		
+		// 停止
+		function stop(){
+			if(!clockId){return;};
+			clearInterval(clockId);
+			// id重置为空，以便再次启动
+			clockId=null;
+		}
+	</script>
+</body>
+</html>

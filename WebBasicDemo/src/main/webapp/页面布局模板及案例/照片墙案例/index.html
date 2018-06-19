@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>照片墙案例</title>
+	<!-- 
+	1. 照片墙案例
+	2. 相对定位：relative
+	 -->
+	<style>
+		body{
+			background-color: #066;
+		}
+
+		ul{
+			/* border: 1px solid red; */
+			width: 800px;
+			margin: 20px auto;
+			/* 去掉列表前面的符号 */
+			list-style-type: none;
+		}
+
+		li{
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin: 10px;
+			float: left;
+			position:relative;
+			background-color:#fff;
+		}
+		
+		/* 添加鼠标悬停特效，实现悬停效果
+		1. relative以自身为目标，做相对坐标的设置
+		 */
+		li:hover{
+			/*position:relative;*/
+			top:-2px;
+			left:2px;
+		}
+		
+		p{
+			text-align:center;
+			font-family:
+				"微软雅黑", "文泉驿正黑", "黑体";
+			width: 200px;
+			position:absolute;
+			bottom:1px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>
+			<img src="images/01.jpg"/>
+			<p>头像01</p>
+		</li>
+		<li>
+			<img src="images/02.jpg"/>
+			<p>头像02</p>
+		</li>
+		<li>
+			<img src="images/02.jpg"/>
+			<p>头像03</p>
+		</li>
+		<li>
+			<img src="images/04.jpg"/>
+			<p>头像04</p>
+		</li>
+		<li>
+			<img src="images/05.jpg"/>
+			<!-- 有bug -->
+			<p>bnchasibdvijsbnfgivdnsognfdsogndsgmnofdk</p>
+		</li>
+		<li>
+			<img src="images/06.jpg"/>
+			<p>tyoxaingfafnsoanfasion fdosanosdan06</p>
+		</li>
+	</ul>
+</body>
+</html>

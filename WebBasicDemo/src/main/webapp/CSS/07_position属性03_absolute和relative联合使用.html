@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 绝对定位
+	1. 绝对定位以带有position属性的父辈为目标
+	2. 若父辈有position则采用就近原则
+	3. 若父辈没有position则以body为目标
+	4. 绝对定位元素脱离流（队伍），位置会释放
+	5. 使用绝对定位position: absolute
+	 -->
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--position的absolute属性一般和relative一起使用-->
+<body>
+	<!-- 只设置position，但不设置偏移量，目的是为了让它成为元素绝对定位的目标，并非让他真的偏移 -->
+    <div style="position: relative;width: 500px;height: 200px;border: 1px solid red;margin: 0 auto;">
+    	<!-- 通过absolute设置与父元素的偏移量 -->
+        <div style="position: absolute;left:0;bottom:0;width: 50px;height: 50px;background-color: black;"></div>
+    </div>
+    
+    
+    <div style="position: relative;width: 500px;height: 200px;border: 1px solid red;margin: 0 auto;">
+
+        <div style="position: absolute;right:0;bottom:0;width: 50px;height: 50px;background-color: black;"></div>
+    </div>
+    <div style="position: relative;width: 500px;height: 200px;border: 1px solid red;margin: 0 auto;">
+
+        <div style="position: absolute;right:0;top:0;width: 50px;height: 50px;background-color: black;"></div>
+    </div>
+</body>
+</html>

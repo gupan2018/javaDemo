@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 外部对象就是浏览器提供的API，大体上分为两个部分：BOM和DOM，DOM和BOM属于包含关系 -->
+
+<!-- BOM介绍：
+全程Browser Object Model，浏览器对象模型，用来访问和操作浏览器窗口，
+使JavaScript有能力与浏览器“对话”
+ 	通过BOM，可移动窗口、更改状态栏文本，执行其他不予页面内容发生直接联系的操作
+ 	没有相关标准，但是被挂壁工坊支持
+ -->
+
+<!-- 浏览器提供了window对象来代表整个浏览器，也提供了以下几个子对象：
+location：地址
+history：历史
+document：文档（整个网页）
+screen：窗口
+navigator：帮助，该对象包含有浏览器相关的信息
+ -->
+ 
+ <!-- DOM介绍 -->
+ <!-- 上诉对象中，document十分重要，代表整个网页，
+ 在其中有head、body、meta、title等网页元素 -->
+ 
+<!-- Window对象
+常用方法：
+1）弹出框
+	alert(), confirm()
+2）定时器：
+	周期性定时器（每隔N毫秒执行一次函数，反复执行，直到大道停止条件为止）
+		clearInterval()， setInterval()
+	一次性定时器（推迟N毫秒执行一次函数，执行完之后，自动停止，也可以在未执行前手动停止）
+		setTimeout(), clearTimeout()
+ --> 
+ 
+ <!-- location对象
+ 属性：
+ 	href：可以获取当前网页的rul，也可以通过设置这个属性的值，将当前网页重新定向到指定页面
+ 		- 通过href跳转，可以在跳转之前加一些自己的业务逻辑
+ 方法：
+ 	reload()：重新载入当前网址
+  -->
+
+ <!-- screen对象
+ 常用属性：
+ width/height（显示器的宽和高）
+ availWidth/availHeight（浏览器窗口占用的宽度和高度）
+  -->
+  
+ <!-- history对象
+ 常用方法：
+ 	back()：等同于点击<-
+ 	forward()：等同于点击->
+ 	go(num)：等同于当即num次->，若num为负数表示后退|num|
+  -->
+  
+ <!-- navigator对象
+ 常用属性：
+ 	userAgent：获取浏览器相关信息
+  -->
+<meta charset="UTF-8">
+<title>windows对象及其子对象</title>
+
+<script>
+// window对象
+	/* 1. 弹出框
+			1) 普通弹出框
+			2）确认框
+			3）输入框
+	*/
+	// 1) 普通弹出框
+	function f1(){
+		// 对于window对象，window.可以省略
+		alert("你好!");
+	}
+	
+	// 2) 确认框
+	function f2(){
+		// 对于window对象，window.可以省略
+		var v = confirm("是否执行操作？");
+		console.log(v);// 点击确定返回true，点击取消或关闭返回false
+	}
+	
+	// 3）输入框
+	function f3(){
+		// 对于window对象，window.可以省略
+		var v = prompt("请输出详细信息");
+		console.log(v);//返回输入的数据
+	}
+	
+	/* 1. 定时器
+		1) 周期性定时器
+		2）一次性定时器
+	*/
+	// 1）周期性定时器
+	function f4(){
+		var n = 5;
+		// 启动定时器（定时器一般写匿名函数）
+		// 返回定时器的id，用来停止定时器
+		var id = setInterval(function(){
+			console.log(n);
+			n--;
+			// 停止定时器
+			if(!n){
+				clearInterval(id);
+			};
+		}, 1000);
+		// 启动定时器相当于启动了一个子线程，当前方法f4相当于主线程，定时器的执行不会影响主线程的执行
+	}
+		
+	// 2）一次性定时器
+	var id
+	function f5(){
+		// 启动定时器，延时3s执行
+		// 通过返回的id值停止定时器（一次型定时器执行完自动停止，也可以通过id值来手动停止）
+		id = setTimeout(function(){
+			for(var i=0; i < 100; i++){
+				console.log(i);
+				if (i===10){
+					console.log("取消定时器");
+					// 若定时器已经执行，则取消无效，若定时器还未执行，则可以取消
+					clearTimeout(id);// 这里定时器已经执行，可以取消
+				}
+			}
+		}, 3000);
+	};
+	
+	function f6(){
+		clearTimeout(id);
+	}
+
+// location对象
+	/* location页面，href属性 */
+	function f7(){
+		var choice = confirm("你确定离开本页面吗？");
+		// 跳转前添加判断逻辑
+		if(!choice){
+			return false;
+		}
+		location.href = "http://www.baidu.com";
+	}
+
+	/* location页面，reload()方法 */
+	function f8(){
+		location.reload();
+	}
+	
+//screen对象
+	/* screen页面，获取屏幕信息 */
+	function f9(){
+		console.log(screen.width);
+		console.log(screen.height);
+		
+		console.log(screen.availWidth);
+		console.log(screen.availHeight);
+	}
+
+// history对象
+	function f10(){
+		history.forward();
+	}
+	function f11(){
+		history.back();
+	}
+
+// navigator对象
+	function f12(){
+		console.log(navigator.userAgent);
+	}
+</script>
+</head>
+<body>
+ 	<!-- windows对象，弹出框案例： -->
+ 	<input type="button" value="按钮1"
+ 		onclick="f1();"/>
+ 	<input type="button" value="按钮2"
+		onclick="f2();"/>
+ 	<input type="button" value="按钮3"
+ 		onclick="f3();"/>
+ 	
+ 	<!-- windows对象，定时器案例： -->
+ 	<input type="button" value="周期性定时器"
+ 		onclick="f4();"/>
+ 	<input type="button" value="一次性定时器"
+ 		onclick="f5();"/>
+ 	<input type="button" value="取消一次性定时器"
+ 		onclick="f6();"/>
+ 		
+ 	<!-- location对象：href属性 -->
+ 	<input type="button" value="跳转"
+ 		onclick="f7();"/>
+ 		
+ 	<!-- location对象：reload()方法 -->
+ 	<input type="button" value="刷新"
+ 		onclick="f8();"/>
+ 		
+ 	<!-- screen对象：获取屏幕宽和高 -->
+ 	<input type="button" value="屏幕信息"
+ 		onclick="f9();"/>
+ 	
+ 	<!-- history对象：前进 -->
+ 	<input type="button" value="前进"
+ 		onclick="f10();"/>
+ 	
+ 	<!-- history对象：后退 -->
+ 	<input type="button" value="后退"
+ 		onclick="f11();"/>
+ 		
+ 	<!-- navigator对象：获取浏览器相关信息 -->
+ 	<input type="button" value="获取浏览器相关信息"
+ 		onclick="f12();"/>
+</body>
+</html>

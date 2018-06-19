@@ -1,0 +1,20 @@
+.c2{
+    font-size: 60px;
+    color: black;
+    /*
+    	边框粗细 线型 颜色
+    	线型：
+    		solid：实线
+    		dashed：虚线
+    	边框粗细常用单位：
+    		%：百分比
+    		px：像素
+    		em：1em代表当前字体尺寸，2em代表当前字体尺寸两倍
+    */
+    border-bottom:1px dashed black;
+}
+
+.c1{
+    background-color: red;
+    color: white;
+}

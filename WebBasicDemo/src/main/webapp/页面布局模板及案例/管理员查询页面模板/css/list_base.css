@@ -1,0 +1,42 @@
+/* 所有查询页面复用的css文件 */
+
+/* 0. 对网页做一些统一的设置 */
+/* 将页面的内边距和外边距归零 */
+
+* {
+	padding:0;
+	margin:0;
+}
+
+/* 1. 给网页分区，设置每个区域的尺寸 */
+div{
+	/* 设置边框，方便观测网页变化 */
+	border:1px solid red;
+	margin:0 auto;
+}
+
+/* 设置logo区域样式 */
+.logo{
+	width:960px;
+	height:61px;
+}
+
+/* 设置menu区域样式 */
+.menu{
+	height:91px;
+}
+
+/* 设置core区域样式 */
+.core{
+	/* 内边距空间用来放渐变条 */
+	padding-top:10px;
+	height:410px;
+}
+
+/* 设置版权区样式 */
+.copyRight{
+	width:960px;
+	height:50px;
+}
+
+

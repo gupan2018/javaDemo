@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 服务器将html页面发送至客户端后，浏览器解析这个html时，html中字符串绘制成相应的dom对象（这套对象
+具有树状结构，称之为dom树，树结构中每级对象称之为节点，节点具有不同的分类），这样浏览器器对这个html页面
+的操作从面向字符串的操作转变为了面向对象的操作，方便用户对于html页面内容进行修改。
+ -->
+ 
+ <!-- document对象节点分类
+1）文档节点
+2）元素节点
+3）注释节点
+4）文本节点
+5）属性节点
+...
+-->
+
+<!-- DOM操作
+1. 读取修改
+	1）nodeName：节点名称
+		返回：
+			a）元素节点/属性节点：标签或属性名称
+			b）文本节点：永远是#text
+			c）文档节点：永远是document
+	2）nodeType：节点类型
+		返回：
+			数字，不同数字代表不同的节点类型
+				1：元素节点
+				2：属性节点
+				3：文本节点
+				8：注释节点
+				9：文档节点
+	3）innerText：设置或获取谓语对象其实和结束标签内的文本
+	4）innerHTML：设置或读取对象其实和结束标签内的HTML
+	5）value：input、select和	textarea节点的值（value）
+	6）节点属性操作
+		a) getAttribute()方法
+			根据属性名称获取属性的值
+		b) setAttribute()方法
+			修改属性名称
+		c) removeAttribute()方法
+			删除属性
+		d）通过标准的属性名读写属性
+		e）通过非标准的属性名读写属性
+		
+2. 查询节点
+	1）根据id查询节点
+		getElementById
+	2）根据标签名查询节点
+		
+	3）根据层次查询节点
+		查询某个节点的亲戚（父亲、孩子、兄弟）
+		a）查询父亲
+			node.parentNode
+		b）查询孩子
+			parentNode.getElementsByTagName("tagName")
+		c）查询兄弟
+			node.parentNode.getElementsByTagName("tagName")[index]
+			
+	4）根据名称查询节点
+		getElementsByTagName
+
+3. 增加节点
+	1）增加节点
+		document.createElement(elementName)
+			elementName：要创建的元素标签名称
+			返回：新创建的节点
+		创建新节点后，由于没有加到DOM树上，所以该元素在页面上不显示，可以采用以下两种方法将元素
+		挂载到新节点上
+	2）添加新节点
+		a）追加
+		parentNode.appendChild(newNode);
+			newNode：刚新创建的节点
+		b）插入
+		parentNode.insertBefore(newNode, refNode);
+			refNode：参考节点，新节点谓语此节点之前添加
+		
+4. 删除节点
+	removeChild(delNode);
+		delNode：需要删除的节点（删除节点会删除整个节点包括该节点下的子节点）
+ -->	
+<meta charset="UTF-8">
+<title>DOM对象详解</title>
+<!-- 读取一个HTML用dom4j技术进行读取
+ -->
+</head>
+<body>
+	<p id="p1">1.<b>读写</b>节点</p>
+	<p id="p2">2.<b>查询</b>节点</p>
+	<p id="p3">3.<b>增删</b>节点</p>
+	
+	<p>
+		<input type="button" value="按钮" id="b1"/>
+	</p>
+	
+	<p>
+		<img src="../../CSS/images/1.jpg" id="i1" />
+	</p>
+	
+	<p id="p6" style="color:red;">标准的属性读写方式</p>
+	
+	<!-- 查询案例
+	 -->
+	<p>
+		<input type="button" value="追加" 
+		onclick="f1();"/>
+		
+		<input type="button" value="插入" 
+		onclick="f2();"/>
+		
+		<input type="button" value="删除" 
+		onclick="f3();"/>
+	</p>
+	<ul id="city">
+		<li id="bj">北京</li>
+		<li>上海</li>
+		<li>武汉</li>
+		<li>成都</li>
+		<li>四川</li>
+		<li>重庆</li>
+	</ul>
+	
+	<p>
+		<input type="radio" name="sex"/>男
+		<input type="radio" name="sex"/>女
+	</p>
+	
+	<script>
+		// window.onload()是页面加载事件，在页面加载完成后自动触发
+		window.onload = function(){
+			/* 1. 读写节点 */
+			// 1）读取节点的名称/类型
+			var p1 = document.getElementById("p1");
+			console.log("节点名称："+ p1.nodeName);
+			console.log("节点类型：" + p1.nodeType);
+			
+			// 2）读写节点的内容
+				// 双标签中的文本叫做内容
+			console.log("innerText" + p1.innerText);// 忽略子标签
+			console.log("innerHTML" + p1.innerHTML);// 含子标签
+			
+			p1.innerText = "修改了";
+			p1.innerHTML = "1. <u>读写</u>节点";
+			console.log("innerText" + p1.innerText);// 忽略子标签
+			console.log("innerHTML" + p1.innerHTML);// 含子标签
+			
+			// 3）读写节点的值
+				// 表单控件中的数据叫值，只有表单控件才有值，只有如下表单控件才有值：
+					/* 
+						input
+						select
+						textarea
+					*/
+			var b1 = document.getElementById("b1");
+			console.log("b1的value：" + b1.value);
+			b1.value="已经修改了";
+			console.log("b1的value：" + b1.value);
+			
+			// 4）读写节点属性
+				// a) 通过方法读写属性
+			var img = 
+				document.getElementById("i1");
+			console.log(img.getAttribute("src"));
+			// 修改src属性
+			img.setAttribute("src", "../../CSS/images/i_name.jpg");
+			// 函数属性
+			img.removeAttribute("src");
+			
+			
+				// b) 通过标准的属性名读写属性
+					//className（用的最多）、id、style（内敛样式，使用的少）
+			var p6 = document.getElementById("p6");
+			console.log(p6.style.color);
+			p6.style.color="green";
+				// c) 通过非标准的属性名读写属性（只有高版本的浏览器才支持，了解即可）
+			// 举例：a.href、img.src
+			
+			/* 2. 查询节点 */
+			console.log("---------------下面是查询节点操作的代码---------------");
+			// 1）查询父亲
+			var bj = document.getElementById("bj");
+			var ul = bj.parentNode;
+			console.log(ul);
+			// 2.1）查询孩子：包括空格、回车，用得少，了解即可
+			console.log(ul.childNodes);
+			// 2.2）查询孩子：只含元素：重点掌握
+			console.log(ul.getElementsByTagName("li"));
+			
+			// 3）查询兄弟：某节点.父亲.孩子们[index]
+			var tmpCity = bj.parentNode.getElementsByTagName("li")[3];
+			console.log(tmpCity.innerText);
+			// 4）根据name查询节点（一般用于插叙一组单选/多选）
+			var radios = 
+				document.getElementsByName("sex");
+			console.log(radios);
+			
+			
+			
+		}
+		/* 3. 创建新节点并显示 */
+		function f1(){
+			// 创建新的li（空的）
+			var li = document.createElement("li");
+			// 给此li设置内容
+			li.innerHTML = "江津";
+			var ul = document.getElementById("city");
+			
+			// 在将他追加到ul下
+			ul.appendChild(li);
+		}
+		
+		function f2(){
+			// 创建新的li（空的）
+			var li = document.createElement("li");
+			// 给此li设置内容
+			li.innerHTML = "香港";
+			var ul = document.getElementById("city");
+			var bj = document.getElementById("bj");
+			// 插入新的节点
+			ul.insertBefore(li, bj);
+		}
+		
+		function f3(){
+			// 获取要删除元素的父亲
+			var ul = 
+				document.getElementById("city");
+			// 获取要删除的元素
+			var bj = 
+				document.getElementById("bj");
+			// 通过父亲删除孩子
+			ul.removeChild(bj);
+		}
+	</script>
+</body>
+</html>

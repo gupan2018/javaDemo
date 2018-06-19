@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#d0{
+			width: 600px;
+			border: 2px solid red;
+		}
+		#d1, #d2, #d3{
+			height: 100px;
+			width: 100px;
+		}
+		#d1{
+			background-color: red; 
+		}
+		#d2{
+			background-color: blue; 
+		}
+		#d3{
+			background-color: black; 
+		}
+		
+		#d1, #d2, #d3{
+			float: left;
+		}
+		
+		/*
+		#d1{
+			float: left;
+		}
+		*/
+		/*
+		#d1, #d2{
+			float: left;
+		}
+		*/
+		
+		/* 消除浮动影响：
+			第一种方法：只消除叔叔的影响，父元素的边框不需要显示
+				在那个元素上加上clear，则该元素就不受影响，他会出现在所有浮动元素的下方
+		 */
+		 p{
+		 	clear:left;
+		 }
+		 
+		 /* 消除浮动影响：
+			第二种方法：消除对父亲的影响，父元素变快要显示
+				1）在父元素内加孔块
+				2）对此空块家clear
+				3）空块将出现在浮动元素下方，不受影响
+				4）应为空块还在流内，从而拉伸了父元素的高度
+		 */
+		#d4{
+			clear:left;
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="d0">
+		<div id="d1"></div>
+		<div id="d2"></div>
+		<div id="d3"></div>
+		<!-- 第二种方法代码 
+		<div id="d4"></div>
+		-->
+	</div>
+	<p>浮动时观察我的位置</p>
+	
+</body>
+</html>

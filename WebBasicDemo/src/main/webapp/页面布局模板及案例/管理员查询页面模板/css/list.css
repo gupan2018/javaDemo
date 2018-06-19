@@ -1,0 +1,255 @@
+/* 所有查询页面复用的css文件 */
+
+/* 0. 对网页做一些统一的设置 */
+/* 将页面的内边距和外边距归零 */
+
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+
+* {
+	padding:0;
+	margin:0;
+}
+
+/* 统一设置网页上的所有字体体积字号 */
+body{
+	font-family:
+	"微软雅黑", "文泉驿正黑", "黑体";
+	font-size:14px;
+	
+}
+
+/* 1. 给网页分区，设置每个区域的尺寸 */
+div{
+	/* 设置边框，方便观测网页变化 */
+	border:1px solid red;
+	margin:0 auto;
+}
+
+/* 设置logo区域样式 */
+.logo{
+	width:960px;
+	height:90px;
+}
+
+/* 设置menu区域样式 */
+.menu{
+	height:91px;
+}
+
+/* 设置core区域样式 */
+.core{
+	/* 内边距空间用来放渐变条 */
+	padding-top:10px;
+	height:410px;
+}
+
+/* 设置版权区样式 */
+.copyRight{
+	width:960px;
+	height:50px;
+}
+
+/* 设置内容区样式 */
+.content{
+	width:950px;
+	height:390px;
+	border:5px solid #8ac1db;
+}
+
+/* 给内容区的子div标签设置统一样式 */
+.content>div{
+	width:910px;
+	height:40px;
+}
+
+/* 覆盖数据区，重新设置高为310px */
+.content .data{
+	height:310px;
+}
+
+/* 设置背景 */
+
+/* 设置背景图、背景色 */
+body{
+	background-image:
+	url("http://images.missyuan.com/attachments/day_150502/20150502_c4a9b4cbd893d7cad143t63AG2O2nOax.jpg");
+	
+	/* 只在y方向上平铺，默认全部平铺 */
+	background-repeat:repeat-y;
+	/* 设置图片位置 */
+	background-position:center;
+}
+
+/* 设置背景色 */
+body{
+	background-color:#8ac1db;
+}
+
+.logo{
+	background-color:green;
+}
+
+.menu{
+	background-color:#0488bb;
+}
+
+.content{
+	background-color:#e8f3f8;
+}
+
+/* 渐变条背景 */
+.core{
+	background-color:purple;
+}
+
+/* 3.设置文本样式 */
+.logo{
+	/* 设置内部元素居右 */
+	text-align:right;
+	line-height:90px;
+}
+
+.logo a{
+	margin-right:40px;
+	color: #fff;
+	/* 去掉下划线 */
+	text-decoration:none;
+}
+
+/* 设置鼠标悬停加粗 */
+.logo a:hover{
+	font-weight:bold;
+}
+
+.copyRight p{
+	color:#fff;
+	text-align:center;
+	line-height:25px;
+}
+
+/* 设置表格样式 */
+.data table{
+	border:1px solid #ccc;
+	/* 边框合并必须写在table上 */
+	border-collapse:collapse;
+	width:100%;
+}
+/* td中的内容默认垂直居中 */
+.data td{
+	border:1px solid #ccc;
+	text-align:center;
+}
+
+.data thead tr{
+	background-color:#fbedce;
+	height:40px;
+	font-weight:bold;
+}
+
+.data tbody tr{
+	background-color:#fff;
+	height:32px;
+}
+
+.data tbody tr:hover{
+	background-color:#f7f9fd;
+}
+
+/* 设置按钮的样式 */
+.modify{
+	border:0;
+	padding-left:17px;
+	background:
+	url(../images/edit.png) 
+	no-repeat left;
+	/* 去除按钮边框 */
+	border:0;
+}
+
+.delete{
+	border:0;
+	padding-left:15px;
+	background:
+	url(../images/delete.png) 
+	no-repeat left;
+	border:0;
+}
+
+.data input:hover{
+	/* 将鼠标形状设置为手型 */
+	cursor:pointer;
+}
+
+/* 解决logo图片和消息框的地位问题 */
+.logo img{
+	float:left;	
+}
+.content{
+	/* 将其作为子元素绝对定位的目标 */
+	position:relative;	
+}
+
+.content .msg{
+	position:absolute;
+	left:200px;
+	top:100px;
+	width:500px;
+	height:80px;
+}
+.msg{
+	background:#fdecec
+		url(../images/checked.png) 
+		no-repeat 10px 21px;
+	border:1px solid #f68a8a;
+}
+
+.msg img{
+	float:right;
+}
+
+.msg img:hover{
+	cursor:pointer;
+}
+
+.msg p{
+	margin-left:38px;
+	line-height:40px;
+}
+
+/* 设置菜单栏样式 */
+.menu ul{
+	border:1px solid yellow;
+	width:960px;
+	height:91px;
+	margin:0 auto;
+	list-style-type:none;
+}
+
+.menu li{
+	border:1px solid yellow;
+	width:68px;
+	height:77px;
+	margin:7px 14px;
+	float:left;
+}
+
+.index{
+	background-image:url(../images/admin-wait.png);
+}
+.index:hover{
+	background-image:url(../images/admin-conn.png);
+}
+
+.role{
+	background-image:url(../images/role-off.png);
+}
+
+.role:hover{
+	background-image:url(../images/role-on.png);
+}
+
+/* 收尾：去掉调试过程中的边框 */
+
+.menu ul, .menu li, div{
+	border:0;
+}

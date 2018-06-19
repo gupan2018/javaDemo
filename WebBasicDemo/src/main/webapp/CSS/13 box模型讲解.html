@@ -1,0 +1,34 @@
+<!-- 申明HTML版本，这样写是写的HTML5格式的网页（不区分大小写） -->
+<!DOCTYPE html>
+<!-- 唯一的根元素 html -->
+<html>
+	<!-- head用来申明网页的基本信息，对网页做基本的配置 -->
+	<head>
+		<!-- 声明字符集编码为utf-8 -->
+		<meta charset="UTF-8">
+		
+		<!-- 声明网页标题 -->
+		<title>box模型讲解</title>
+		
+		<style>
+			/*
+			一个元素实际占有的宽度应该是：width+2×border+2×padding+2×margin
+			实际占有的高度应该是：height+2×border+2×padding+2×margin
+			margin（外边距），border(边框)，padding（内边距）。
+			*/
+			
+			#i1{
+				background:green;
+				margin:0 auto;
+				width:700px;
+				height:80px;
+			}
+		</style>
+	</head>
+	
+	<!-- body 写网页具体内容 -->
+	<body>
+		<div id="i1">
+		</div>
+	</body>
+</html>

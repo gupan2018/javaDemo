@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+声明变量
+	1. js使用var定义变量
+	2. js变量没有数据类型
+	3. js没有初始化的变量，自动取值为undefined
+	
+数据类型
+	特殊类型：
+		null:空(表示没有定义过这个对象)
+		undefined:未定义（已经声明了这个对象，但是从未赋值）
+	基本类型：
+		Number：数字（不区分整形数值和浮点型数值）
+		String：字符串
+		Boolean：布尔
+		Function：函数
+		Array：数组
+	外部对象：
+		window：浏览器对象
+		document：文档对象
+	自定义对象：
+		Object：自定义对象
+
+数据类型隐式转换：
+	数字+字符串：数字转换为字符串
+	数字+布尔值：true转换为1，false转换为0
+	字符串+布尔值：布尔值转换为字符串true或false
+	布尔值+布尔值：布尔值转换为数值1或0
+	
+数据类型转换函数
+	toString：所有数据类型均可转换为String类型
+	parseInt：强制转换成整数，如果不能转换，则返回NaN（Not a Number）（字符串和数字可能转换，转换不会四舍五入，直接截取整数部分）
+	parseFloat：强制转换成浮点数，如果不能转换，则返回NaN
+	typeof：查询当前数据类型
+	isNaN：is Not a Number，判断被检测表达式是否经过转换后是否是一个数，如果是数返回false，如果不是数返回true
+	
+运算符
+	==：判断数值是否相同
+	===：判断数值和变量类型是否相同
+	
+流程控制语句：
+	if语句（同java）
+	switch case（同java）
+	for（同java）
+	while（同java）
+	do while（同java）
+ -->
+ <script>
+ 	/*
+ 		1. 将js封装成函数，点击某按钮时调用
+ 		2. 不把js封装成函数，直接在head中写js，这样的js在网页加载时立刻调用，该js的执行时机甚至比body还早
+ 		
+ 	*/
+ 	console.log(isNaN("abc"));
+ 	var m = '3';
+ 	var n = 3;
+ 	console.log(m == n);
+ 	console.log(m === n);
+ </script>
+ 
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<p></p>
+</body>
+</html>

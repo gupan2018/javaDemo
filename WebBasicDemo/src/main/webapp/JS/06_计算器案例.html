@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" id="num"/>
+	<input type="button" value="平方" onclick="square();"/>
+	=<span id ="result"></span>
+	
+	<script>
+		function square(){
+			var num = document.getElementById("num");
+			var result = document.getElementById("result");
+			var n = num.value;
+			// 判断是否为数字
+			if (!isNaN(n)) {
+				// 是数字计算平方
+				result.innerHTML = n * n;
+			} else {
+				// 不是数字，给予提示
+				result.innerHTML="请输入数字";
+			}
+		};
+	</script>
+</body>
+</html>

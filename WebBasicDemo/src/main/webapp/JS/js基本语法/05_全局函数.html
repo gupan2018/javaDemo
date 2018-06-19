@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>常用全局函数</title>
+<!-- JS中常用全局函数如下：
+1. parseInt/parseFloat
+2. isNaN
+3. eval
+ -->
+ 
+<script>
+/* eval运算演示 */
+// 不用eval打印2+3，用eval打印5
+
+function testEval(){
+	var result;
+	try{
+		// result = eval("fsdaf");
+		result = eval("3+5");
+	}catch(e){
+		result = e;
+	}
+	return result;
+}
+
+var result = testEval();
+console.log(result);
+</script> 
+</head>
+<body>
+
+</body>
+</html>

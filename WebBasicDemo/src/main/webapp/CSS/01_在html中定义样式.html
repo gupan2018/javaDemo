@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 定义内部样式在head元素里写style标签，在style标签中写样式，此样式可以被当前页面上众多元素复用 -->
+    <style>
+    <!--
+        查找颜色：RGB颜色对照表
+        设置背景色：background-color
+        设置高度：height
+        设置宽度：width
+    -->
+		/*CSS中注释是这样的*/
+        /*
+        #i1{
+            background-color: #2459a2;
+            height: 48px;
+        }
+        #i2{
+            background-color: #2459a2;
+            height: 48px;
+        }
+        #i3{
+            background-color: #2459a2;
+            height: 48px;
+        }
+        .c1{
+            background-color: #2459a2;
+            height: 10px;
+        }
+        */
+        /*#c2{*/
+            /*background-color: black;*/
+            /*color: white;*/
+        /*}*/
+
+        /*.c1 div{*/
+            /*background-color: black;*/
+            /*color: white;*/
+        /*}*/
+        .i1,.i2,.i3{
+             background-color: black;
+            color: white;
+        }
+        .c1[n='alex']{ width:100px; height:200px; }
+    </style>
+</head>
+<body>
+    <div class="i1">ff</div>
+    <div class="i2">ff</div>
+    <div class="i3">2</div>
+    <input class="c1" type="text" n="alex">
+    <input class="c1" type="password">
+</body>
+</html>

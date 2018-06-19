@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form enctype="multipart/form-data">
+        <div>
+			<!-- textarea设置文本域适合属于一个比较长的信息：个人说明等
+				设置cols和rows的大小，会改变文本域的大小 -->
+            <textarea name="meno" cols="30" rows="5">预置值</textarea>
+            
+			<!-- 设置multiple表示可以多选
+				size：代表展示窗口的大小
+				设置了size和multiple后不能展示下拉效果
+			 -->
+            <select name="city" size="10" multiple="multiple">
+            	<option value="1">请选择</option>
+                <option value="1">北京</option>
+                <option value="2">上海</option>
+                <!-- 设置selected="selected"代表默认选择该项 -->
+                <option value="3" selected="selected">南京</option>
+                <option value="4">成都</option>
+            </select>
+
+
+            <input type="text" name="user" />
+            <p>请选择性别：</p>
+            
+            <!-- radio默认不做互斥，如果要做互斥，多个radio的name值需要设置为一样 -->
+            男：<input type="radio" name="gender" value="1"  />
+            女：<input type="radio" name="gender" value="2" checked="checked"/>
+            Alex：<input type="radio" name="gender" value="3"/>
+            
+            <!-- 多选框，checkbox -->
+            <p>爱好</p>
+            篮球：<input type="checkbox" name="favor"  value="1" />
+            足球：<input type="checkbox" name="favor"  value="2" checked="checked" />
+            皮球：<input type="checkbox" name="favor"  value="3" />
+            台球：<input type="checkbox" name="favor"  value="4" checked="checked"/>
+            网球：<input type="checkbox" name="favor"  value="5" />
+            <p>技能</p>
+            撩妹：<input type="checkbox" name="skill" checked="checked" />
+            写代码：<input type="checkbox" name="skill"/>
+            <p>上传文件</p>
+            <input type="file" name="fname"/>
+        </div>
+
+
+
+
+
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+        
+        <p>
+        	<input type="checkbox" id="c1" name="accept"  value="1" />
+        	<!-- 使用label把文字和选择框绑定（通过id值），这样点击文字的时候也可以实现勾选，提高易用性 -->
+        	<label for="c1">我已阅读并资源遵守此协议</label>
+        </p>
+    </form>
+</body>
+</html>

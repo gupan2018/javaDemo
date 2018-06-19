@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	/* String对象：和java类似 */
+	var str1 = "hello world";
+	console.log(str1.length);
+	console.log(str1.charAt(2));
+	console.log(str1.indexOf("world"));
+	console.log(str1.lastIndexOf("world"));
+	console.log(str1.replace("world", "enenen"));
+	console.log(str1);
+	
+	/* Number对象 */
+	var data = 23.23413478;
+	// toFixed(num)，Number对象转换为字符串，保留num个小数，超出做四舍五入运算
+	console.log(data.toFixed(2));
+	
+	/* Array对象： */
+	// 创建一个指定数组
+	var a4 = [100, 200, 300];
+	// 创建一个空数组
+	var a1 = new Array();
+	
+	a1.push("滚滚");
+	a1.push(24);
+	a1.push(false);
+	console.log(a1[2]);
+	
+	// 创建二维数组
+	var ary = [
+		[1, 2, 3],
+		["a", "b"],
+		["滚滚"]
+	]
+	// ...
+	
+	/* Math对象 */
+	/*
+	圆周率：Math.PI;
+	四舍五入（只去num的整数部分）：Math.round(num);
+	*/
+	
+	/* Date对象 */
+	var now = new Date("2018/6/15 13:59");// 把服务器传来的时间作为变量存储
+	console.log(now);
+	// 转换为本地日期/时间格式的字符串
+	console.log(now.toLocaleDateString());
+	console.log(now.toLocaleTimeString());
+	
+	// 读写时间分量，读：getXXX()，写：setXXX()
+	var y = now.getFullYear();
+	var m = now.getMonth();
+	var d = now.getDate();
+	var today = y + "年" + m + "月" + d + "日";
+	console.log(today);
+	
+	/* RegExp对象（正则对象） */
+	/*
+	1. 如何床架正则对象
+		1）直接量
+			var reg = /正则表达式/匹配模式;
+			案例：
+				/\d/g;
+		2）创建对象
+			var reg = new RegExp(正则字符串, 匹配模式)
+			案例：
+				new RegExp("\\d", "g");
+	2. 正则对象方法
+		1）reg.exec(str);
+			普通模式：从str中找出和reg匹配的第一个字符串
+			全局模式：第n次调出从str里找出和reg匹配的第n个子串
+			
+		2) reg.test(str);特别常用，十分重要
+			判断str里是否包含和reg匹配的子串
+	
+	3. 匹配模式
+		g：global全局模式，全局检测字符串
+		i：ignore，忽略大小写来检测字符串
+		
+	4. 字符串支持的正则的方法
+		1）str.replace(reg, descStr)，修改字符串是生成新的字符串，所以源字符串不变
+			将str中和reg匹配的所有子串都替换成目标
+		2) str.match(reg)
+			从字符串中找出与正则匹配的子串
+		3) str.search()
+			从str中找出和reg匹配的第一个子串的索引
+	*/
+	var str = "you can you up, no can no bb";
+	// 创建正则对象
+	var reg = /no/;
+	// 正则对象的方法
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	
+	// 使用全局模式进行匹配
+	var reg = /no/g;
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	
+	console.log(reg.test(str));
+	
+	console.log(str.replace(reg, "bu"));
+	console.log(str.match(reg));
+	console.log(str.search(reg));
+	
+	/* Function对象 */
+	// 通过Function关键字所声明的是一个Function对象，浏览器加载网页到此处时，
+	// 并没有调用此对象，仅仅是创建了对象而已
+	function sum(){
+		var s = 0;
+		if(arguments.length>0){
+			for (var i=0;i< arguments.length;i++){
+				s+=arguments[i];
+			}
+		}
+		return s;
+	}
+	// 一般是在点击按钮时调用函数对象，也可以在页面加载时直接调用它
+	console.log("开始执行js语句：");
+	console.log(sum(1, 2, 3, 4, 5));
+	console.log(sum(1, 2, 3));
+	
+	// 上述语句控制台打印为5和3，通过控制台的现象可以得到如下结论：
+		/* JS默认不支持重载的写法，但是其本身支持重载
+	JS在传参时，会把参数封装到arguments对象中，取参数时，可以通过
+	arguments[i]的方式通过索引的方式来获取参数，当arguments[i]传参
+	给函数是，按对应的索引传递给对应的形参
+	*/
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

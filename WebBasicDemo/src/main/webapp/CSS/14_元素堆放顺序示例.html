@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- z-index属性的用法 -->
+	<meta charset="UTF-8">
+	<title>元素堆叠顺序</title>
+	<style>
+		#d0{
+			backgpround-color:#066;
+			width:500px;
+			height:500px;
+			margin:20px auto;
+			position:relative;
+		}
+	
+		#d0 div{
+			height:200px;
+			width:200px;
+			background-color:#fca8a8;
+			border: 1px solid red;
+		}
+		
+		#d1, #d2, #d3{
+			position:absolute;
+		}
+		
+		#d1{
+			left:150px;
+			top:50px;
+		}
+		
+		#d2{
+			left:200px;
+			top:100px;
+		}
+		
+		#d3{
+			left:250px;
+			top:150px;
+		}
+		
+		#d0 div:hover{
+			z-index:999;
+		}
+	</style>
+</head>
+<body>
+	<div id="d0">
+		<div id="d1"></div>
+		<div id="d2"></div>
+		<div id="d3"></div>
+	</div>
+</body>
+</html>

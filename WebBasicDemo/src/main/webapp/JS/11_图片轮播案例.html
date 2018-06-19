@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图片轮播案例</title>
+<style>
+	div{
+		border:1px solid red;
+		width:500px;
+		height:500px;
+		margin:50px auto;
+	}
+	
+	.show{
+		display:inline-block;
+	}
+	
+	.hide{
+		display:none;
+	}
+</style>
+</head>
+<body>
+	<!-- 
+	hover不是事件：是伪类选择器
+	onmouseover：是鼠标悬停时间
+	onmouseout：是鼠标离开事件
+	 -->
+	<div 
+	onmouseover="stop();"
+	onmouseout="lunbo();"
+	>
+		<img src="images/05.jpg" class="show"/>
+		<img src="images/06.jpg" class="hide"/>
+		<img src="images/07.jpg" class="hide"/>
+	</div>
+	
+	<script>
+		window.onload = function(){lunbo();}
+		
+		var id;
+		var n = 0;//轮播次数
+		// 声明轮播方法
+		function lunbo(){
+			id = setInterval(function(){
+				n++;
+				// 获取所有图片
+				var imgs = 
+					document.getElementsByTagName("img");
+				
+				// 将所有的图片隐藏
+				for (var i = 0;i<imgs.length;i++){
+					imgs[i].className="hide";
+				}
+				
+				// 将下一张图片显示
+				var index = n%imgs.length;
+				imgs[index].className="show";
+			}, 2000);
+		}
+		
+		function stop(){
+			clearInterval(id);
+		}
+		
+	</script>
+</body>
+</html>
