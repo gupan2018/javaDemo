@@ -2,24 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="PrintWriter"/>
-			<item value="ThreadSyncQuestion"/>
-			<item value="Java中在没有定义访问控制权限时，(**这里就这么理解，暂时没有好的表述方式**)凡是数据(double PI = 3.14159;)都是常量(public static final)，凡是方法(void show();)都是抽象(public abstract)的。"/>
-			<item value="&lt;configuration&gt;  "/>
+			<item value="../"/>
+			<item value="datatable_W"/>
+			<item value="dataType"/>
+			<item value="dataTypeWrapper"/>
+			<item value="dataTypeW"/>
+			<item value="date"/>
+			<item value="Show"/>
+			<item value="show"/>
+			<item value="100"/>
+			<item value="20"/>
+			<item value="10"/>
+			<item value="::"/>
+			<item value="::before"/>
+			<item value="dataTables_"/>
+			<item value="dataTables"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="345" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="415" key="DIALOG_HEIGHT"/>
-		<item value="370" key="DIALOG_X_ORIGIN"/>
-		<item value="310" key="DIALOG_Y_ORIGIN"/>
+		<item value="1525" key="DIALOG_X_ORIGIN"/>
+		<item value="166" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

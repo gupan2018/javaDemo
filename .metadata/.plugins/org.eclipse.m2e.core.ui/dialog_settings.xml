@@ -2,25 +2,29 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="com.web"/>
 			<item value="com.gupan"/>
+			<item value="com.web"/>
 			<item value="test"/>
 			<item value="com.maven"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="ProjectDemoFrame"/>
+			<item value="JSP02ELAndJSTL01"/>
+			<item value="JSP01Learn"/>
+			<item value="servletDemo06ThreadSecure"/>
+			<item value="servletDemo05ServletConfig"/>
+			<item value="servletDemo04SurviveLength"/>
+			<item value="servletDemoSurviveLength"/>
+			<item value="servletDemo03PathDesc"/>
+			<item value="servletDemoPathDesc"/>
+			<item value="servletDemo02EmpManager"/>
+			<item value="ServletDemo01Register"/>
+			<item value="servletDemoRegister"/>
+			<item value="servletDemo"/>
 			<item value="WebBasic"/>
 			<item value="DesignMode"/>
-			<item value="jdbcTest"/>
-			<item value="xmlParse"/>
-			<item value="JunitTest02"/>
-			<item value="JunitTest"/>
-			<item value="Junitest"/>
-			<item value="TestCase"/>
-			<item value="JunitTest01"/>
-			<item value="JnitTest"/>
-			<item value="JnuitLearn"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -54,8 +58,8 @@
 	</section>
 	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
 		<item value="480" key="width"/>
-		<item value="2964" key="x"/>
-		<item value="244" key="y"/>
+		<item value="1070" key="x"/>
+		<item value="186" key="y"/>
 		<item value="598" key="height"/>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
@@ -72,6 +76,14 @@
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
 			<item value="/media/gupan/系统软件等/eclipse_workspace_java/jdbcTest"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/JSP01Learn"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/servletDemo06ThreadSecure"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/servletDemo04SurviveLength/src/main/webapp/WEB-INF/web.xml"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/servletDemo03PathDesc"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/servletDemo02EmpManager"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/ServletDemo01Register"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/servletDemo"/>
+			<item value="/media/gupan/系统软件等/eclipse_workspace_java/Servers"/>
 			<item value="/media/gupan/系统软件等/eclipse_workspace_java/JunitTest02/emplist.xml"/>
 			<item value="D:\eclipse_workspace_java\JavaBasicLanguage"/>
 			<item value="D:\eclipse_workspace_java\JnitTest"/>

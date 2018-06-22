@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 事件就是js调用的时机
+1. 事件的分类：
+	1）鼠标事件
+		onclick：单击
+		ondblclick：双击
+		onmousedown：
+		onmouseup：
+		onmouseover：鼠标悬停
+		onmouseout：鼠标移开
+		
+	2）键盘事件
+		onkeydown
+		onkeyup
+		
+	3）状态改变事件（某条件/状态达成时触发）
+		onload：页面加载后触发
+		onchange：页面发生改变时触发
+		onfocus
+		onblur：失去焦点是触发
+		onsubmit：提交表单时触发
+		
+2. 事件的定义
+	1）直接定义事件
+		在元素上通过事件属性（如onclick）定义事件
+		优点：
+			直观
+		缺点：
+			标签和js间耦合度高
+	2）后绑定事件
+		在页面加载后，使用hs获取元素并给他绑定事件
+		优点：
+			HTML和js耦合度低
+		缺点：
+			不直观
+
+3. 取消事件
+	在一个事件的触发函数中，返回false可以取消事件
+
+4. event对象（事件对象）
+	1）当事件别触发时，有一些信息可以被确定下来
+		例如：
+			点击鼠标的左键或右键
+			点击的位置（坐标）
+			点击的按键
+		在开发项目时可能需要使用这些信息（较少），浏览器为了方便开发者，将这些信息封装到一个
+		对象中，这个对象叫event对象（事件对象）
+	2）如何获取事件对象
+		a）直接定义事件时
+			在调用函数时，直接传入event
+			在写这个函数时增加参数来接收他
+			
+		b）迟绑定事件
+			触发事件时浏览器会自动给函数传入event
+			在写这个函数时，加参数来接收它
+
+5. 事件的处理机制
+	1）冒泡机制
+		a）机制
+			事件是由内想外传播的，这中规律我们称之为冒泡机制
+			<div onclick="alert('我是div');">
+				<p onclick="alert('我是p');">
+					<input type="button" value="js冒泡模型" 
+						onclick="alert('我是input')"/>
+				</p>
+			</div>
+			上述案例触发事件的顺序为input->p->div
+		b）冒泡机制的作用
+			i）可以简化事件的定义
+				可以在父元素上定义个事件，接收众多子元素的事件，
+			但是要知道是哪一个子元素点击的，需要知道事件源。
+			
+			ii）
+			
+		c）取消事件的冒泡
+			对于不同的浏览器，取消事件冒泡机制的方式不同，总共有以下两种方式
+			event.stopPropagation();
+			event.cancelBubble=true;
+			
+6. 获取事件源
+	事件源：就是事件发生的具体位置，事件发生的源头，通过事件对象可以获取事件源
+	
+		对于不同的浏览器获取事件源的方式不同，为了考虑浏览器兼容的问题，可以考
+	虑用如下的方式来获取
+	var obj = e.srcElement || e.target;
+	
+ -->
+<meta charset="UTF-8">
+<title>事件绑定详解</title>
+
+<style>
+	div{
+		width:500px;
+		border:1px solid red;
+		padding:30px;
+	}
+	
+	p{
+		border:1px solid red;
+		padding:30px;
+	}
+</style>
+</head>
+<body>
+	<!-- 定义事件 -->
+	<input type="button" value="直接定义事件的方式"
+		onclick="f1(event);"/>
+	<input type="button" value="迟绑定事件" id="btn2"
+		/>
+	
+	<!-- 冒泡模型 -->
+	<div onclick="alert('我是div');">
+		<p onclick="alert('我是p');">
+			<input type="button" value="js冒泡模型" 
+				onclick="f2(event);"/>
+		</p>
+	</div>
+	
+	<!-- 获取事件源 -->
+	<div onclick="f3(event);">
+		<a href="#">顶部</a>
+		<img src="../images/01.jpg" />
+		<span>abc</span>
+	</div>
+	
+	<script>
+		/* 直接定义事件 */
+		function f1(e){
+			console.log("直接定义事件")
+			// 
+			console.log(e);
+		}
+		
+		/* 后绑定事件 */
+		window.onload = function(){
+			var btn2 = 
+				document.getElementById("btn2");
+			btn2.onclick = function(e){
+				console.log("迟绑定事件");
+				console.log(e);
+			};
+		}
+		
+		/* 取消冒泡机制演示 */
+		function f2(e){
+			alert("我是input");
+			
+			// 用兼容的方式停止冒泡机制
+			if(e.stopPropagation){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble=true;
+			}
+		}
+		
+		/* 获取事件源 */
+		function f3(e){
+			// 获取事件源，考虑浏览器兼容性
+			var obj = e.srcElement || e.target;
+			// 打印事件源
+			console.log(obj);
+		}
+	</script>
+</body>
+</html>

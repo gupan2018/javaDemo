@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--a标签中绑定了事件，并且也指定了跳转页面，执行时先执行自己绑定
+		的时间，之后再执行跳转
+		
+		如果要屏蔽页面跳转等自带的时间，需要采用如下的写法（加return）-->
+		<a onclick="return clickOn()" href="http://www.cnblogs.com/gupan/">了解圆滚滚光明面</a>
+		<a id="i1" href="http://www.cnblogs.com/gupan/">了解圆滚滚阴暗面</a>
+	<script src="../jquery-1.12.4.js"></script>
+	<script>
+		function clickOn(){
+			alert(123);
+			return false;
+		}
+		$("#i1").click(function(){
+			alert(456);
+			return false;
+		})
+	</script>
+	</body>
+</html>

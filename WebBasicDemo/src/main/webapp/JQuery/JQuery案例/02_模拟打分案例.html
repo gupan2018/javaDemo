@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>模拟打分案例</title>
+</head>
+<body>
+	<p>
+		<input type="button" value="打分" />
+	</p>
+	<p>
+		圆滚滚：<input type="text"/>
+	</p>
+	
+	<p>
+		滚滚：<input type="text"/>
+	</p>
+	
+	<p>
+		向前滚：<input type="text"/>
+	</p>
+	
+	<p>
+		攀攀：<input type="text"/>
+	</p>
+<script src="../jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// 给button后绑定单击事件
+		$(":button").click(function(){
+			// 启动定时器
+			var n = 0;
+			var id = setInterval(function(){
+				// 获取下一个要处理的框
+				var $text = $(":text:eq("+ n +")");
+				
+				// 模拟光标切入事件
+				$text.trigger("focus");
+				
+				// 生成随机分数写入框内
+				var s = 
+					parseInt(Math.random() * 100);
+				$text.val(s);
+				
+				// 都处理完就停止定时器
+				if(n == $(":text").length-1){
+					clearInterval(id);
+				}
+				
+				n++;
+			}, 2000);
+		});
+	});
+</script>
+</body>
+</html>

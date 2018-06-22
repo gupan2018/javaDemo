@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 写在最前
+JQuery 2.x开始不再支持IE 6、7、8
+ -->
+ 
+ <!-- 使用JQuery的步骤
+ 1. 引入JQuery的js文件
+ 2. 使用选择器定位要操作的节点
+ 3. 调用JQuery的方法进行操作
+  -->
+  
+  <!-- JQuery详解
+  1. 调用JQuery对象
+  	1）JQuery对象才能调用JQuery方法
+  	2）dom对象才能调用dom方法
+  	3）JQuery对象本质上是dom数组
+ 
+  2. JQuery对象与DOM对象的关系
+  	JQuery对象本质上是一个DOM对象数组，他在该数组上扩展了一些操作数组中元素的方法
+  	可以直接操作这个数组
+  	1）obj.length：获取数组长度
+  	2）obj.get(index)：获取数组中的某一个DOM对象
+  	3）ibj[index]：等价于obj.get(index)
+  	4) DOM对象转化为JQuery对象
+  		jqueryObj = $(domObj);
+  
+  3. JQuery选择器
+  	1）基本选择器
+  		a）元素选择器：根据标签名定位元素
+  			$("标签名");
+  		b）类选择器：根据class属性定位元素
+  			$(".class的属性名");
+  		c）id选择器：根据id定位元素
+  			$("#id");
+  		d）选择器组：定位一组选择器所对应的所有元素
+  			$("#id, .importent");
+  	2）层次选择器
+  		a）在select1元素下，选中所有满足select2的子孙元素
+  			$("select1 select2");
+  		b）在select1元素下，选中所有满足select2的子孙元素
+  			$("select1>select2");
+  		c）在select1元素下，满足select2的下一个弟弟
+  			$("select1+select2");
+  		d）在select1元素下，满足select2的所有弟弟
+  			$("select1~select2");
+  	3）过滤选择器
+  		a）基本过滤选择器
+  			:first		第一个元素
+  			:last		最后一个元素
+  			:not(selector)		把selector排除在外
+  			:even		选偶数行
+  			:odd		选奇数行
+  			:ep(index)	下标等于index的元素
+  			:gt(index)	下标大于index的元素
+  			:lt(index)	下标小于index的元素
+  		b)内容过滤选择器
+  			:contains(text)		匹配包含给定文本内容的元素
+  			:empty		匹配不包含子元素或文本的空元素
+  		c）可见性过滤选择器
+  			:hidden		匹配所有不可见元素，或type为hidden的元素
+  			:visible	匹配所有课件元素
+  		d）属性过滤选择器
+  			[attribute]			匹配具有attribute属性的元素
+  			[attribute=value]	匹配属性等于value的元素
+  			[attribute!=value]	匹配属性不等于value的元素
+  		e）状态过滤选择器
+  			:enabled		匹配可用的元素
+  			:disabled		匹配不可用的元素
+  			:checked		匹配选中的checkbox
+  			:selected		匹配选中的option
+  	4）表单选择器（可以匹配所有type为某一个值的元素）
+  		:text		匹配文本框
+  		:password	匹配密码框
+  		:radio		匹配单选框
+  		:checkbox	匹配多选框
+  		:submit		匹配提交按钮
+  		:reset		匹配重置按钮
+  		:button		匹配普通按钮
+  		:file		匹配文件框
+  		:hidden		匹配隐藏框
+   -->
+<meta charset="UTF-8">
+<title>JQuery初识</title>
+</head>
+<body>
+	<input type="button" value="+" 
+		onclick="bigger();"/>
+	<p>1.引入jquery.js</p>
+	<p>2.使用选择器定位要操作的节点</p>
+	<p>3.调用JQuery的方法进行操作</p>
+	
+	<!-- JQuery对象调用演示 -->
+	<input type="button" value="打印"
+		onclick="myPrint();"/>
+	<p>1）JQuery对象才能调用JQuery方法</p>
+  	<p>2）dom对象才能调用dom方法</p>
+  	<p>3）JQuery对象本质上是dom数组</p>
+  	
+  	<!-- JQuery和dom对象之间的相互转换 -->
+  	<div>
+  		<img src="../images/01.jpg" 
+  			onclick="chg(this);"
+  		/>
+  	</div>
+  	
+  	<!-- JQuery选择器演示 -->
+  		<ul>
+  			<li>北京市</li>
+  			<li id="sz">深圳市</li>
+			<li>河北省</li>
+			<li>广东省</li>
+			<li>广西省</li>
+			<li style="display:none;">地狱</li>
+  		</ul>
+  	
+  		<p>
+  			<!-- 加上disabled之后就不可用了 -->
+  			<!-- 
+  			readonly：只读，但数据有效依然可以提交给服务器
+  			disabled：不可用，数据无效不能提交给服务器
+  			 -->
+  			<input type="text" disabled/>
+  			<input type="password" />
+  		</p>
+  		
+  		<p>
+  			<input type="radio" name="sex" checked/>男
+  			<input type="radio" name="sex" />女
+  		</p>
+	<script src="../jquery-1.12.4.js"></script>
+	<script>		
+		function bigger(){
+			// 获取段落的原始字号
+			var size = $("p").css("font-size");
+			
+			// 去掉单位，便于增加字号
+			size = size.replace("px", "");
+			
+			// 将字号+1再设置给段落
+			$("p").css("font-size", ++size+"px");
+		}
+		
+		/* 一次在控制台输出每一个段落的内容 */
+		function myPrint(){
+			// $ps是JQuery对象，使用选择器获取的是JQuery对象，为了加以区分，
+			// JQury对象前加$符号
+			var $ps = $("p");
+			for(var i=0;i<$ps.length;i++){
+				// 从JQuery对象中获取的值的dom对象
+				var p = $ps[i];
+				console.log(p.innerHTML);
+			}
+		}
+		
+		/* JQuery和dom对象之间的相互转换 */
+		function chg(img){
+			// dom对象转换为JQuery对象
+			var $img = $(img);
+			var width = $img.width();
+			var height = $img.width();
+			
+			console.log(width);
+			console.log(height);
+			// JQuery对象的方法一般情况下返回的还是这个JQuery对象，可以实现链式编程
+			$img.width(width/2).height(height/2);
+		}
+		
+		/* JQuery选择器演示 */
+		window.onload = function(){
+			// 1. 基本选择器
+				// 同css选择器
+				
+			// 2. 层次选择器
+				// 选择子孙/儿子（同css派生选择器）
+				
+				// 选择弟弟(如果他的弟弟的类型和他一样，可以省略)
+				console.log($("#sz+"));
+				console.log($("#sz~li"));
+				
+			// 3. 过滤选择器（*重点）
+				// 3.1 基本过滤选择器
+				console.log("基本过滤选择器：");
+				console.log($("li:first"));
+				console.log($("li:even"));
+				console.log($("li:eq(1)"));
+				console.log($("li:not(#sz)"));
+				// 3.2 内容过滤选择器
+				console.log("内容过滤选择器：");
+				console.log($("li:contains('省')"));
+				// 3.3 可见性过滤选择器
+				console.log("可见性过滤选择器：");
+				console.log($("li:hidden"));
+				// 3.4 属性过滤选择器
+				console.log("属性过滤选择器：");
+				console.log($("li[id]"));
+				// 3.5 状态过滤选择器
+				console.log("状态过滤选择器：");
+				console.log($("input:enabled"));
+				console.log($("input:disabled"));
+				console.log($("input:checked"));
+			// 4. 表单选择器
+				console.log("表单选择器：");
+				console.log($("input:radio"));
+				// 等价于
+				console.log($(":radio"));
+		}
+	</script>
+</body>
+</html>

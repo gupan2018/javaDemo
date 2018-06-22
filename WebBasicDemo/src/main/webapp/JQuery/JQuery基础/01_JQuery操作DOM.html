@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery操作DOM -->
+
+<!-- 要点总结：JQuery对象和DOM对象的来源
+1. 通过$()获取到的对象都是JQuery对象
+2. 通过$()转换而来的是JQuery对象
+3. JQuery赋值的方法一般返回的还是JQuery对象
+4. JQuery取值的方法若返回节点则是JQuery对象
+5. JQuery取值的放回若返回文字则是String（内置对象）
+
+注：通过控制台打印可以观察哪一个是JQuery对象哪一个是DOM对象
+ -->
+
+<!-- 
+1. 读写节点
+	1.1 读写内容（双标签中间的文字）
+		html()
+		text()
+	1.2 读写值（表单控件有值）
+		val()
+	1.3 读写属性
+		读：attr("属性名")
+		写：attr("属性名", "属性值")
+
+2. 创建节点
+	$("节点内容")
+
+3. 插入DOM节点
+	parent.append(obj)		将obj作为最后一个子节点添加进来
+	parent.prepend(obj)		将obj作为第一个子节点添加进来
+	parent.after(obj)		将obj作为下一个兄弟节点添加进来
+	parent.before(obj)		将obj作为上一个兄弟节点添加进来
+
+4. 删除节点
+	obj.remove()			删除节点
+	obj.remove(selector)	只删除满足selector的节点
+	obj.empty()				清空节点（相当于obj.html("");）
+
+5. 遍历节点(查找某节点的亲戚)
+		有时候我们调用别人的方法得到一个节点，对其进行一些操作，然后又要对此节点的亲戚进行操作，
+	此时无法写选择器，只能调用这样的方法
+	
+	children()/children(selector)		查找子节点/满足条件的子节点
+	next()/next(selector)				下一个兄弟节点/满足条件的下一个兄弟节点
+	prev()/prev(selector)				上一个兄弟节点/满足条件的上一个兄弟节点
+	siblings()/siblings(seletor)		所有兄弟/满足条件的所有兄弟
+	find(selector)						查找满足选择器的所有后代
+	parent()							父节点
+
+6. 样式操作
+	addClass("")		追加样式	
+	removeClass("")		移除指定样式
+	removeClass()		移除所有样式
+	toggleClass("")		切换样式
+	hasClass("")		判断是否有某个样式
+	css("")				读取css的值
+	css("", "")			设置多个样式
+ -->
+
+<meta charset="UTF-8">
+<title>JQuery操作DOM</title>
+<style>
+	.big{
+		font-size:30px;
+	}
+	
+	.important{
+		color:red;
+	}
+</style>
+</head>
+<body>
+	<P>JQuery对<b>DOM操作</b>提供了支持</P>
+	<p>
+		<input type="button" value="AAA" />
+	</p>
+	
+	<p>
+		<img src="../images/01.jpg" />
+	</p>
+	
+	<ul>
+		<li>北京市</li>
+		<li id="sz">深圳市</li>
+		<li>河北省</li>
+		<li>广东省</li>
+		<li>广西省</li>
+		<li style="display:none;">地狱</li>
+ 	</ul>
+ 	
+ 	<p>
+ 		<input type="button" value="却换字号"
+ 			onclick="switchFontSize();"/>
+ 	</p>
+	<script src="../jquery-1.12.4.js"></script>
+	<script>
+		/*
+		下面这句话使用JQuery的方式在页面加载之后调用这个函数，其作用等价于
+		window.onload=function(){
+			...	
+		};
+		*/
+		$(function(){
+			//1. 读写节点
+				// 1.1 读写内容（双标签中间的文字）
+					// html() ==>  innerHTML
+					// text() ==>  innerText
+					// 读内容
+					console.log($("p:eq(0)").html());
+					console.log($("p:eq(0)").text());
+					
+					// 写内容
+					console.log($("p:eq(0)").html("JQuery对<u>DOM操作</u>提供了支持"));
+				// 1.2 读写值（表单控件有值）
+					// val() ==> value
+					console.log($("input[type='button']:first").val());
+					$(":button:first").val("BBB");
+				// 1.3 读写属性
+					// attr() == get/setAttribute()
+					console.log($("img:first").attr("src"));
+					$("img:first").attr("src", "../images/02.jpg");
+			//2. 创建节点
+				var $li1 = $("<li>杭州</li>");
+				var $li2 = $("<li>苏州</li>");
+			//3. 插入节点
+				$("ul").append($li1);
+				$("#sz").after($li2);
+			
+			//4. 删除节点
+				// 删除最后一个城市
+				$("li:last").remove();
+			
+			//5. 遍历节点
+				var $sz = $("#sz");
+				// 要获取深圳的亲戚做进一步处理
+				console.log($sz.parent());
+				console.log($sz.prev());
+				console.log($sz.siblings());
+				// 假设我调用的别人的方法得到了ul
+				var $ul = $("ul");
+				// 要获取列表的孩子做进一步处理
+				console.log($ul.find("li:gt(2)"));
+				
+			//6. 样式操作
+				$("p:first").addClass("big").addClass("important");
+				$("p:first").removeClass("big").removeClass("important");
+				// 删除所有样式
+				$("p:first").removeClass();
+				// 判断元素中是否包含某样式
+				console.log($("p:first").hasClass("big"));
+				// 切换样式样式
+					// 见switchFontSize()函数
+		});
+		
+		// 切换样式函数
+		function switchFontSize(){
+			// 通过按钮实现了点一下字体变大，再点一下，字体变小
+			$("p:first").toggleClass("big");
+		}
+		
+	</script>
+</body>
+</html>

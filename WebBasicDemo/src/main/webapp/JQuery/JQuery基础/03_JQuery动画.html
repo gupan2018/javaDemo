@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery动画
+实现动画的原理：
+	通过定时器连续改变元素的样式，包括大小和透明度，所以执行动画时，
+仍然会执行下面的语句，如果要实现在动画执行完之后执行一句话，这样的
+就需要定义回调函数
+一、显示和隐藏效果
+	1. 显示、隐藏的动画效果
+		show()/hide()
+		作用：
+			同时改变元素的宽度和高度来实现显示或隐藏
+		用法：
+			$obj.show(执行时间, 回调函数);
+			执行时间：
+				slow、nomal、fast或毫秒数
+			回调函数：
+				动画执行完毕之后要执行的函数
+	
+	2. 上下滑动式的动画实现
+		slidDown()/slideUp()
+		作用：
+			通过改变元素高度来实现显示或隐藏的效果(动作和show()/hide()相同，但是没有颜色没有变浅)
+	
+	3. 淡入淡出式动画效果
+		fadeIn()/fadeOut()
+		作用：通过改变不透明读opacity来实现显示或隐藏
+
+二、自定义动画效果
+	自定义动画基于定位，通过定时器连续改变元素的偏移量就能实现动画效果
+	animate(偏移位置, 执行时间, 回调函数);
+		偏移位置：描述动画执行之后元素的样式
+		执行时间：毫秒数
+		回调函数：动画执行结束后要执行的函数
+ -->
+<meta charset="UTF-8">
+<title>JQuery动画</title>
+<style>
+	/* 设置相对/绝对/固定定位，才能做出动画效果，动画就是连续改变元素的偏移量 */
+	img{
+		position:relative;
+	}
+	
+	#adv{
+		width:200px;
+		height:100px;
+		border:1px solid red;
+		position:fixed;
+		top:50px;
+		right:-180px;
+	}
+</style>
+
+</head>
+<body>
+	<p>
+		<input type="button" value="显示" 
+			onclick="f1();"/>
+		<input type="button" value="隐藏" 
+			onclick="f2();"/>
+		<input type="button" value="删除" 
+			onclick="f3();"/>
+			
+		<input type="button" value="动吧动吧" 
+			onclick="f4();"/>
+	</p>
+
+	<p>
+		<img src="../images/01.jpg" />
+	</p>
+	<p id="msg" style="display:none;">操作成功</p>
+	<div id="adv">
+		
+	</div>
+<script src="../jquery-1.12.4.js"></script>
+<script>
+	function f1(){
+		//$("img").show(3000);
+		//$("img").slideDown(3000);
+		// 动画执行完毕之后调用函数
+		$("img").fadeIn(3000,function(){console.log("完成");});
+	}
+	
+	function f2(){
+		// $("img").hide(3000);
+		// $("img").slideUp(3000);
+		$("img").fadeOut(3000);
+	}
+	
+	function f3(){
+		$("#msg").fadeIn(500).fadeOut(2500);
+	}
+	
+	function f4(){
+		$("img").animate({"left":"300px"}, 3000)
+			.animate({"top":"300px"}, 3000)
+			.animate({"left":"0"}, 3000)
+			.animate({"top":"0"}, 3000);
+	}
+	
+	$(function(){
+		$("#adv").hover(
+			function(){
+				$(this).animate({"right":"0"}, 500);
+			},
+			function(){
+				$(this).animate({"right":"-180px"}, 500);
+			}
+		);
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 自定义对象
+1. 如何创建自定义对象
+	1.1 直接量
+		var student = {"name":"gp", "age":24};
+		{...}代表一个对象，内涵多组键值对
+			key一般都是字符串，而value可以是任意类型的数据
+		采用直接量方式创建的对象也叫JSON对象
+	1.2 构造器
+		在JS中，我们new出来的函数就是构造器，一般情况函数名首字母大写的函数，就是需要new的
+		1）内置构造器
+			特殊：Array、Date、RegExp、Function
+			通用：Object
+		2）自定义构造器
+			a）声明一个函数，首字母要大写
+			b）声明参数，让调用者清楚要传什么参数
+			c）让对象记住这些参数
+
+2. 总结
+	无论用那种方式，创建出来的对象都一样，都是Object
+	若创建的对象给别人用，建立用自定义构造器的方式
+ -->
+<meta charset="UTF-8">
+<title>自定义对象</title>
+</head>
+<body>
+	<!-- 1. 采用直接量的方式创建对象 -->
+	<input type="button" value="采用直接量的方式创建对象" 
+		onclick="f1();"/>
+		
+	<input type="button" value="内置构造器" 
+		onclick="f2();"/>
+	
+	<input type="button" value="采用自定义构造器创建对象" 
+		onclick="f3();"/>
+	
+	<script>
+	/* 采用直接量的方式创建对象
+	*/
+		function f1(){
+			var student =
+				{
+					"name":"gp",
+					"age":24,
+					"work":function(){
+						alert("可能要找工作");
+					}
+				};
+			
+			alert(student.name);
+			alert(student.age);
+			// 需要加()才能调用
+			student.work();
+		}
+	
+	/* 采用内置构造器创建对象
+	*/
+		function f2(){
+			var teacher = new Object();
+			teacher.name = "gupan";
+			teacher.age = 24;
+			teacher.work = function(){
+				alert("没有任何技能，就是骗吃骗喝的");
+			}
+			
+			alert(teacher.name);
+			alert(teacher.age);
+			teacher.work();
+		}
+	
+	/* 采用自定义构造器创建对象
+	*/
+		function Coder(name, age, work){
+			this.name = name;
+			this.age = age;
+			this.job = work;
+			// this指代当前对象
+			// .jov是给此对象增加job属性
+			// =work是将参数work赋值给此属性
+		}
+		function f3(){
+			var coder = new Coder("gungun", 24, function(){
+				alert("掌握多种语言");
+			});
+			
+			alert(coder.name);
+			alert(coder.age);
+			coder.job();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- JQuery事件绑定语法
+1. 基本语法
+	$obj.bind(事件类型, 事件处理函数)
+2. 案例
+	$obj.bind("click", fn); // click代表的是onclick事件，对于JQuery的事件，都是JS的事件绑定少写了on
+	上述写法可以简化成如下形式：
+	$obj.click(fn);
+	
+	fn是事件绑定的函数
+3. JQuery获取事件对象
+	在JQuery中，为事件对象任意传递一个参数就可以获取事件对象
+	如：
+		$obj.click(function(e){...});
+		
+		//JQuery就是想解决不同浏览器兼容的麻烦（如获取事件源等），将区别统一，提供统一的方法
+
+	JQuery统一取消冒泡：
+		e.stopPropagation();
+	JQuery获取事件源：
+		e.target
+
+4. JQuery的合成事件种类
+	hover(mouseenter, mouseleave)		模拟光标悬停事件
+	toggle()							在多个事件响应中切换
+
+5. JQuery模拟操作
+	基本语法：
+		$obj.trigger(事件类型)
+		案例：
+			obj,triger("focus");
+			简写形式：$obj.focus();
+
+ -->
+<meta charset="UTF-8">
+<title>JQuery实现事件绑定</title>
+</head>
+<body>
+	<p>
+		<input type="button" value="按钮1" />
+		<input type="button" value="按钮2" />
+	</p>
+	
+	<div>
+  		<img src="../images/01.jpg" />
+  	</div>
+<script src="../jquery-1.12.4.js"></script>
+<script>
+	/*
+	$(function(){});类似与window.onload=function(){};
+	但是
+		window.onload=function(){};若写多次，那么只有最后一个会生效
+		$(function(){});若写多次，都有效，所以可以写多次
+	
+	$(function(){});写多次的的妙用：
+		一个网页上可能会引用多个外部的js文件（a.js、b.js），由于软件的原因，有时候需要
+	写多个window.onload，这样就会带来矛盾，所以用$(function(){});的方式可以避免这种
+	冲突。
+	*/
+	$(function(){
+		// 给按钮1后绑定单击事件
+		$(":button:eq(0)").click(function(e){
+			console.log("我用JQuery绑定了事件");
+			// 此对象别JQuery做了封装，因为事件对象是浏览器创建的，不同浏览器创建的事件对象有区别，开发时要兼顾这个区别很麻烦
+			//JQuery就是想解决不同浏览器兼容的麻烦（如获取事件源等），将区别统一，提供统一的方法
+			/*
+				JQuery统一取消冒泡：
+					e.stopPropagation();
+				JQuery获取事件源：
+					e.target
+			*/
+			console.log(e);
+		});
+	});
+	
+	$(function(){
+		// 后绑定hover事件，该事件是JQuery特有的事件，必须使用JQuery后绑定才行
+		$("img").hover(
+			function(){
+				console.log("这家伙来了，快跑");
+				//$(this).width(250).height(250);
+				$(this).css("width","250px").css("height","250px");
+			},//鼠标选同时调用
+			function(){
+				console.log("这家伙走了，快回来 ");
+				$(this).width(500).height(500);
+			}//鼠标离开时调用
+		);
+	});
+	
+	$(function(){
+		$(":button:eq(1)").click(function(){
+			// 让图片在显示与隐藏之前切换
+			$("img").toggle();
+		});
+	});
+</script>
+</body>
+</html>
